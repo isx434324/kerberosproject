@@ -1,4 +1,4 @@
-# Servei_kerberos
+# Servei kerberos
 Serveis kerberitzats, utilitzacio de backend clasica i LDAP.
 
 Tania Gabriela Bonilla Alvarenga
