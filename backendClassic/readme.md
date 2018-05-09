@@ -6,8 +6,6 @@ In this model, we will perform a Server Kerberos with a classic backend.
 I put exemples of the principals orders for the basic management of a kerberos db2 database fro the beginning.
 For this we will use a kerberos server _krb.edt.org_.
 
-- [Kerberos](https://hub.docker.com/r/antagme/kerberos/)
-
 ## Features
 
 Manipulation and treatment of the kerberos database
@@ -32,7 +30,12 @@ _This is important for an easily comunication between servers and clients._
  ```bash
  # docker network create --subnet 172.11.0.0/16 kerberos
  ```
- 
+
+If you want to salt the two next steps just use my image:
+ ```bash
+ # docker run --name krb.edt.org --hostname pkserver --net kerberos --ip 172.11.0.2  -d isx434324/backendclasic:pkserver
+ ```
+
 #### Create image
 _As we are in the directori [krb.edt.org](https://github.com/isx434324/kerberosproject/backendClassic/krb.edt.org)_
 
@@ -44,12 +47,14 @@ _As we are in the directori [krb.edt.org](https://github.com/isx434324/kerberosp
  ```bash
  # docker run --name krb.edt.org --hostname pkserver --net kerberos --ip 172.11.0.2  -d krb.edt.org
  ```
- 
+
 As the container is not interactive, you can acces:
 
     docker exec -it krb.edt.org /bin/bash
 
- por aqui
+
+Having the container running we can start to prove how to administrate our database.
+
 ### Kadmin/kadmin.local
 
 [root@pkserver docker]# kadmin.local -q "add_principal tania"
@@ -80,18 +85,18 @@ tania@EDT.ORG
 ### Date Format
 
 
-Months: january, jan, february, feb, march, mar, april, apr, may, june, jun, july, jul,
+**Months:** january, jan, february, feb, march, mar, april, apr, may, june, jun, july, jul,
 august, aug, september, sep, sept, october, oct, november, nov, december, dec
 
-Days: sunday, sun, monday, mon, tuesday, tues, tue, wednesday, wednes, wed, thurs-
+**Days:** sunday, sun, monday, mon, tuesday, tues, tue, wednesday, wednes, wed, thurs-
 day, thurs, thur, thu, friday, fri, saturday, sat
 
-Units: year, month, fortnight, week, day, hour, minute, min, second, sec
+**Units:** year, month, fortnight, week, day, hour, minute, min, second, sec
 
-Relative: tomorrow, yesterday, today, now, last, this, next, first, second, third, fourth,
+**Relative:** tomorrow, yesterday, today, now, last, this, next, first, second, third, fourth,
 fifth, sixth, seventh, eighth, ninth, tenth, eleventh, twelfth, ago
 
-Time Zones: kadmin recognizes abbreviations for most of the world’s time zones.
+**Time Zones:** kadmin recognizes abbreviations for most of the world’s time zones.
 
 ### Principals
 
@@ -240,7 +245,7 @@ It is important that you NOT FORGET this password.
 Enter KDC database master key: masterkey
 Re-enter KDC database master key to verify: masterkey
 
-the stash files are  for the authentication of the kdc when doing kadmin and database utilities
+The stash files are  for the authentication of the kdc when doing kadmin and database utilities
 
 [root@pkserver docker]# **kdb5_util stash -f stashfile**
 Using existing stashed keys to update stash file.
