@@ -1,4 +1,4 @@
-# Example 1 - StartTLS LDAP Server With SASL GSSAPI Auth
+# Model 1 - Basic treatment of the kerberos database
 
 ## Overview
 
