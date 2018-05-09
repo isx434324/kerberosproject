@@ -58,7 +58,7 @@ Having the container running we can start to prove how to administrate our datab
 ### Kadmin/kadmin.local
 
  ```bash
-[root@pkserver docker]# **kadmin.local -q "add_principal tania"**
+[root@pkserver docker]# kadmin.local -q "add_principal tania"
 Authenticating as principal root/admin@EDT.ORG with password.
 WARNING: no policy specified for tania@EDT.ORG; defaulting to no policy
 Enter password for principal "tania@EDT.ORG": ktania
@@ -75,6 +75,7 @@ Re-enter password for principal "pere@EDT.ORG": kpere
 Principal "pere@EDT.ORG" created.
  ```
 
+ ```bash
 [root@pkserver docker]# kadmin.local -q "list_principals"
 Authenticating as principal root/admin@EDT.ORG with password.
 K/M@EDT.ORG
@@ -85,6 +86,7 @@ kiprop/pkserver@EDT.ORG
 krbtgt/EDT.ORG@EDT.ORG
 pere@EDT.ORG
 tania@EDT.ORG
+ ```
 
 ### Date Format
 
@@ -104,6 +106,7 @@ fifth, sixth, seventh, eighth, ninth, tenth, eleventh, twelfth, ago
 
 ### Principals
 
+ ```bash
 kadmin.local: **get_principals**
 K/M@EDT.ORG
 kadmin/admin@EDT.ORG
@@ -112,7 +115,9 @@ kadmin/pkserver@EDT.ORG
 kiprop/pkserver@EDT.ORG
 krbtgt/EDT.ORG@EDT.ORG
 tania@EDT.ORG
+ ```
 
+ ```bash
 kadmin.local:  **get_principal tania**
 Principal: tania@EDT.ORG
 Expiration date: [never]
@@ -136,12 +141,16 @@ Key: vno 2, des-cbc-md5
 MKey: vno 1
 Attributes:
 Policy: [none]
+ ```
 
+ ```bash
 kadmin.local:  **change_password tania**
 Enter password for principal "tania@EDT.ORG": 
 Re-enter password for principal "tania@EDT.ORG": 
 Password for "tania@EDT.ORG" changed.
+ ```
 
+ ```bash
 kadmin.local:  **modify_principal -pwexpire 05/10/2019 tania**
 Principal "tania@EDT.ORG" modified.
 kadmin.local:  get_principal tania
@@ -167,7 +176,9 @@ Key: vno 2, des-cbc-md5
 MKey: vno 1
 Attributes:
 Policy: [none]
+ ```
 
+ ```bash
 kadmin.local:  **rename_principal tania taniaguapa**
 Are you sure you want to rename the principal "tania@EDT.ORG" to "taniaguapa@EDT.ORG"? (yes/no): yes
 Principal "tania@EDT.ORG" renamed to "taniaguapa@EDT.ORG".
@@ -180,7 +191,9 @@ kadmin/pkserver@EDT.ORG
 kiprop/pkserver@EDT.ORG
 krbtgt/EDT.ORG@EDT.ORG
 taniaguapa@EDT.ORG
+ ```
 
+ ```bash
 kadmin.local:  **<span style:="color:red">delete_principal taniaguapa</span>**
 Are you sure you want to delete the principal "taniaguapa@EDT.ORG"? (yes/no): yes
 Principal "taniaguapa@EDT.ORG" deleted.
@@ -192,14 +205,19 @@ kadmin/changepw@EDT.ORG
 kadmin/pkserver@EDT.ORG
 kiprop/pkserver@EDT.ORG
 krbtgt/EDT.ORG@EDT.ORG
-
+ ```
 
 ### Policies
+ ```bash
 kadmin.local:  **add_policy -minlength 6 -maxfailure 5 -failurecountinterval "5 minutes" -lockoutduration "1 hour" policy_segura**
+ ```
 
+ ```bash
 kadmin.local:  **get_policies**
 policy_segura
+ ```
 
+ ```bash
 kadmin.local:  **get_policy policy_segura**
 Policy: policy_segura
 Maximum password life: 0
@@ -210,9 +228,9 @@ Number of old keys kept: 1
 Maximum password failures before lockout: 5
 Password failure count reset interval: 0 days 00:05:00
 Password lockout duration: 0 days 01:00:00
+ ```
 
-
-	
+ ```bash
 kadmin.local:  **modify_policy -lockoutduration "2 hours" policy_segura**
 kadmin.local:  **get_policy policy_segura**
 Policy: policy_segura
@@ -224,22 +242,29 @@ Number of old keys kept: 1
 Maximum password failures before lockout: 5
 Password failure count reset interval: 0 days 00:05:00
 Password lockout duration: 0 days 02:00:00
+ ```
 
+ ```bash
 kadmin.local:  **get_policies**
 policy_segura
 kadmin.local:  **delete_policy policy_segura**
 Are you sure you want to delete the policy "policy_segura"? (yes/no): yes
 kadmin.local:  **get_policies**
 kadmin.local:
-
+ ```
+ 
 ### Global operations on the kerberos database
 
+
+ ```bash
 [root@pkserver docker]# **kdb5_util -r EDT.ORG destroy**
 Deleting KDC database stored in '/var/kerberos/krb5kdc/principal', are you sure?
 (type 'yes' to confirm)? yes
 OK, deleting database '/var/kerberos/krb5kdc/principal'...
 ** Database '/var/kerberos/krb5kdc/principal' destroyed.
+ ```
 
+ ```bash
 [root@pkserver docker]# **kdb5_util create -r TANIA.ORG -s**
 Loading random data
 Initializing database '/var/kerberos/krb5kdc/principal' for realm 'TANIA.ORG',
@@ -248,11 +273,16 @@ You will be prompted for the database Master Password.
 It is important that you NOT FORGET this password.
 Enter KDC database master key: masterkey
 Re-enter KDC database master key to verify: masterkey
+ ```
 
 The stash files are  for the authentication of the kdc when doing kadmin and database utilities
 
+ ```bash
 [root@pkserver docker]# **kdb5_util stash -f stashfile**
 Using existing stashed keys to update stash file.
+ ```
 
+ ```bash
 [root@pkserver docker]# **cat stashfile **
 #B#EDT.ORG#K#M#Z�#�## _�2פ��#&�8��|o��#����H��h|.�*�#
+ ```
