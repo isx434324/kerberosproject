@@ -1,0 +1,17 @@
+#ASIX M11 2017-2018
+#kerberos server
+#servidor kerberos detached
+
+FROM fedora:24
+MAINTAINER tania@edt "ASIX kerberos server Tania 2018"
+RUN dnf -y install nmap iputils iproute krb5-libs krb5-server krb5-workstation
+RUN mkdir /opt/docker
+COPY * /opt/docker/
+COPY krb5.conf /etc/
+COPY kdc.conf kadm5.acl /var/kerberos/krb5kdc/
+RUN /usr/sbin/kdb5_util create -P masterkey -s
+RUN chmod +x /opt/docker/startup.sh
+WORKDIR /opt/docker
+CMD ["/opt/docker/startup.sh"]
+EXPOSE 749 464 88
+
