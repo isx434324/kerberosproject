@@ -57,19 +57,23 @@ Having the container running we can start to prove how to administrate our datab
 
 ### Kadmin/kadmin.local
 
-[root@pkserver docker]# kadmin.local -q "add_principal tania"
+ ```bash
+[root@pkserver docker]# **kadmin.local -q "add_principal tania"**
 Authenticating as principal root/admin@EDT.ORG with password.
 WARNING: no policy specified for tania@EDT.ORG; defaulting to no policy
 Enter password for principal "tania@EDT.ORG": ktania
 Re-enter password for principal "tania@EDT.ORG":  ktania
 Principal "tania@EDT.ORG" created.
+ ```
 
+ ```bash
 [root@pkserver docker]# kadmin.local -p tania -r EDT.ORG -q "addprinc pere"
 Authenticating as principal tania with password.
 WARNING: no policy specified for pere@EDT.ORG; defaulting to no policy
 Enter password for principal "pere@EDT.ORG": kpere
 Re-enter password for principal "pere@EDT.ORG": kpere 
 Principal "pere@EDT.ORG" created.
+ ```
 
 [root@pkserver docker]# kadmin.local -q "list_principals"
 Authenticating as principal root/admin@EDT.ORG with password.
