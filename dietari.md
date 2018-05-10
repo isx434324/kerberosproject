@@ -75,10 +75,13 @@ May 02 08:17:30 pkserverc krb5kdc\[324](info): set up 2 sockets
 May 02 08:17:30 pkserverc krb5kdc\[325](info): commencing operation
 
 **Jueves 03/05/2018**
+
 Continua sin hacer el bind al dn del kadmin!
 Documento mejor el backend clasic posant exemples de les ordres mes comuns para principals,
 policies i operacions globals
 
+**Viernes 04/05/2018**
+ 
 
 
 

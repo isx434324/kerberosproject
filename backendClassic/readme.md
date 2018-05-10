@@ -1,4 +1,4 @@
-# Model 1 - Basic treatment of the kerberos database
+# Models Backend Classic
 
 ## Overview
 
@@ -26,7 +26,7 @@ Servei2 Kerberitzat [kservice2server](https://github.com/isx434324/kerberosproje
 - Service1 Kerberitzat: kservice1server 172.11.0.5
 - Service2 Kerberitzat: kservice2server 172.11.0.6
 
-### Model1
+### Servidor Kerberos
 Manipulation and treatment of the kerberos database
 
 - Kadmin/kadmin.local
@@ -35,7 +35,7 @@ Manipulation and treatment of the kerberos database
 - Policies
 - Global operations on the kerberos databse
 
-### Model2
+### Model1
 Client Unix/PAM
 
 Process of the kerberos authentication of a user Unix without password.
@@ -43,7 +43,7 @@ Process of the kerberos authentication of a user Unix without password.
 su user
 require kerberos password
 
-### Model3
+### Model2
 Ssh Kerberitzat
 How the service ssh use kerberos for the autentication of a client unix that use ssh.
 Add ssh to the kerberos keytab
@@ -53,25 +53,25 @@ The user obtain the ticket
 [client@localhost]$ ssh client@sshserver don't require password
 
 
-### Model4
+### Model3
 Servei1 Kerberitzat
 
 How the service use kerberos for the autentication of a client unix that use the service
-Add servei to the kerberos keytab
+Add service to the kerberos keytab
 
 Add user to kerberos database
 The user obtain the ticket
-when user the service don't require password
+when the user use the service don't require password
 
-### Model5
+### Model4
 Servei2 Kerberitzat
 
 How the service use kerberos for the autentication of a client unix that use the service
-Add servei to the kerberos keytab
+Add service to the kerberos keytab
 
 Add user to kerberos database
 The user obtain the ticket
-when user the service don't require password
+when the user use the service don't require password
 
 
 
