@@ -1,6 +1,5 @@
 #ASIX M11 2017-2018
-#kerberos server
-#servidor kerberos detached
+#Container client detached
 
 FROM fedora:24
 MAINTAINER tania@edt "ASIX Client Unix PAM Tania 2018"
