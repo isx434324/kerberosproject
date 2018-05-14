@@ -10,6 +10,8 @@ COPY * /opt/docker/
 COPY krb5.conf /etc/
 COPY kdc.conf kadm5.acl /var/kerberos/krb5kdc/
 RUN /usr/sbin/kdb5_util create -P masterkey -s
+RUN kadmin.local -r EDT.ORG -q "addprinc -pw ktania tania"
+RUN kadmin.local -r EDT.ORG -q "addprinc -pw ktania tania/admin"
 RUN chmod +x /opt/docker/startup.sh
 WORKDIR /opt/docker
 CMD ["/opt/docker/startup.sh"]
