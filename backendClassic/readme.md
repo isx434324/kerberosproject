@@ -13,7 +13,7 @@ Client Unix/PAM [kclient](https://github.com/isx434324/kerberosproject/tree/mast
 
 Ssh Kerberitzat [ksshserver](https://github.com/isx434324/kerberosproject/tree/master/backendClassic/ksshserver)
 
-Servei1 Kerberitzat [kservice1server](https://github.com/isx434324/kerberosproject/tree/master/backendClassic/kservice1server)
+FTP Kerberitzat [kftpserver](https://github.com/isx434324/kerberosproject/tree/master/backendClassic/kftpserver)
 
 Servei2 Kerberitzat [kservice2server](https://github.com/isx434324/kerberosproject/tree/master/backendClassic/kservice2server)
 
@@ -22,8 +22,8 @@ Servei2 Kerberitzat [kservice2server](https://github.com/isx434324/kerberosproje
 - Network: kerberos 172.11.0.0/16
 - Kerberos Server: krb.edt.org 172.11.0.2
 - Client Unix/PAM: kclient 172.11.0.3
-- Ssh Kerberitzat: ksshserver 172.11.0.4
-- Service1 Kerberitzat: kservice1server 172.11.0.5
+- SSH Kerberitzat: ksshserver 172.11.0.4
+- FTP Kerberitzat: kftpserver 172.11.0.5
 - Service2 Kerberitzat: kservice2server 172.11.0.6
 
 ### Servidor Kerberos
@@ -54,14 +54,15 @@ The user obtain the ticket
 
 
 ### Model3
-Servei1 Kerberitzat
+FTP Kerberized
 
-How the service use kerberos for the autentication of a client unix that use the service
-Add service to the kerberos keytab
+How a server ftp use kerberos for the autentication of the ftp clients.
+Add ftp to the kerberos keytab
 
-Add user to kerberos database
-The user obtain the ticket
-when the user use the service don't require password
+Configure PAM for using the module pam_krb5.so
+Add a user (without passwrod unix) in ftp server, the same client must exist on kerberos database.
+
+The ftp client try to acces to the service ftp and use the  kerberos passwrod to authenticate itself.
 
 ### Model4
 Servei2 Kerberitzat
