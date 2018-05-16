@@ -1,0 +1,10 @@
+#%PAM-1.0
+#auth       required     pam_nologin.so
+auth       sufficient   pam_krb5.so
+#auth       include      password-auth
+
+account    include      password-auth
+account    sufficient   pam_krb5.so
+
+session    include      password-auth
+session    sufficient   pam_krb5.so
