@@ -8,7 +8,6 @@ RUN dnf -y install nmap procps iputils iproute openldap openldap-clients openlda
 RUN mkdir /opt/docker
 WORKDIR /opt/docker
 COPY * /opt/docker/
-COPY kerberos.schema /etc/openldap/schema/
 RUN cp /opt/docker/ca* /etc/openldap/certs/
 RUN cp /opt/docker/server* /etc/openldap/certs/
 RUN /opt/docker/regeneradb.sh
