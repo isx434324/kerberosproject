@@ -15,7 +15,7 @@ Ssh Kerberitzat [ksshserver](https://github.com/isx434324/kerberosproject/tree/m
 
 FTP Kerberitzat [kftpserver](https://github.com/isx434324/kerberosproject/tree/master/backendClassic/kftpserver)
 
-Imap Kerberitzat [kimapserver](https://github.com/isx434324/kerberosproject/tree/master/backendClassic/kservice2server)
+Imap Kerberitzat [kimapserver](https://github.com/isx434324/kerberosproject/tree/master/backendClassic/kimapserver)
 
 ### Hostnames and ips
 
