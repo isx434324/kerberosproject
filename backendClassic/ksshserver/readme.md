@@ -31,42 +31,49 @@ _As we are in the directori [ksshserver](https://github.com/isx434324/kerberospr
 As the containers are not interactive, you can acces:
 
     docker exec -it ksshserver /bin/bash
-
-
+Add the user tania without a unix password 
  ```bash
+useradd tania
 
  ```
 
+We connect 
+Having the ssh and kerberos running we are going to create a new principal for the service and add the service to the keytab.
 
  ```bash
-
+ addprinc -randkey
+ ktadd -k
  ```
+We can prove it using the user tania/admin that has privileges in the kerberos server:
 
  ```bash
+
+kdamin.local -p tania/admin
+listprincs
 
  ```
  
+Right we have tania@EDT.ORG and the principal for the sshserver.
+Note that the unix user tania must also exist in the kerberos database to get the credentials.
+
+
+As a client we are going to get the credentials to use the ssh service
+ ```bash
+kinit tania
+ktania
+ ```
+ 
+If the authentication was succesfull we'll have an output like this.
   ```bash
+klist
 
 
  ```
 
- ```bash
 
-
- ```
-
-
- ```bash
-
- ```
+Right we have the credentials, now we can acces to ksshserver without using a password because we are trusted for ssh by kerberos server.
  
- 
-  ```bash
-
+ ```bash
+ssh tania@ksshserver
 
  ```
-
-
-
-

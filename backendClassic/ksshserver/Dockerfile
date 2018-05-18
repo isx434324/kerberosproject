@@ -14,8 +14,9 @@ COPY * /opt/docker/
 RUN rm -rf /etc/ssh/sshd_config/sshd_config
 COPY sshd_config /etc/ssh/
 COPY krb5.conf /etc/
-RUN kadmin -p tania/admin -w ktania -q "addprinc -randkey host/sshserver"
-RUN kadmin -p tania/admin -w ktania -q "ktadd -k /etc/krb5.keytab host/ksshserver"
+#RUN kadmin -p tania/admin -w ktania -q "addprinc -randkey host/sshserver"
+#RUN kadmin -p tania/admin -w ktania -q "ktadd -k /etc/krb5.keytab host/ksshserver" 
 WORKDIR /opt/docker
-CMD ["/opt/docker/startup.sh"] 
+CMD ["/opt/docker/startup.sh"]
+
 
