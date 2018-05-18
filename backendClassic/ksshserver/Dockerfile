@@ -9,7 +9,6 @@ RUN echo jupiter | passwd root --stdin
 RUN mkdir /opt/docker
 RUN ssh-keygen -A
 RUN rm /var/run/nologin
-RUN useradd tania
 COPY * /opt/docker/
 RUN rm -rf /etc/ssh/sshd_config/sshd_config
 COPY sshd_config /etc/ssh/

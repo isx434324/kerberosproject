@@ -30,27 +30,19 @@ If you want to salt the two next steps just use my images:
  ```
 
 #### Create images
-Using the directories
+Using the directory
 
-[krb.edt.org](https://github.com/isx434324/kerberosproject/tree/master/backendClassic/krb.edt.org)
 [kclient](https://github.com/isx434324/kerberosproject/tree/master/backendClassic/kclient)
 
  ```bash
- # docker build -t krb.edt.org .
  # docker build -t kclient . 
  ```
 
  
-#### Running containers
+#### Running interactive container 
  ```bash
- # docker run --name krb.edt.org --hostname kserver --net kerberos --ip 172.11.0.2  -d krb.edt.org
- # docker run --name kclient --hostname kclient --net kerberos --ip 172.11.0.3  -d kclient
+ # docker run --name kclient --hostname kclient --net kerberos --ip 172.11.0.3 -it kclient
  ```
-
-As the containers are not interactive, you can acces:
-
-    docker exec -it krb.edt.org /bin/bash
-    docker exec -it kclient /bin/bash
 
 In this model it's only necessary to have the client interactive.
 Note that the user must have an account in the kerberos server database. (See the section [Principals](https://github.com/isx434324/kerberosproject/tree/master/backendClassic/krb.edt.org) in the kerberos management documentation.)

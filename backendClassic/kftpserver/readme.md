@@ -49,8 +49,10 @@ _As we are in the directori [kftpserver](https://github.com/isx434324/kerberospr
  ```
 
 As the container is not interactive, you can acces:
-
+ 
+ ```bash
     docker exec -it krb.edt.org /bin/bash
+ ```
 
 
  ```bash
