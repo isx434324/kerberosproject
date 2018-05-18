@@ -21,7 +21,7 @@ _As we are in the directori [kftpserver](https://github.com/isx434324/kerberospr
  
 #### Run container for kerberos server
  ```bash
- # docker run --name kimapserver --hostname kftpserver --net kerberos --ip 172.11.0.6  -d kftpserver
+ # docker run --name kimapserver --hostname imappserver --net kerberos --ip 172.11.0.6  -d kimapserver
  ```
 
 As the container is not interactive, you can acces:
@@ -32,35 +32,20 @@ As the container is not interactive, you can acces:
 
 
  ```bash
-[root@kftp docker]# vim /etc/pam.d/vsftpd
-#%PAM-1.0
-session    optional     pam_keyinit.so    force revoke
-auth       required	pam_listfile.so item=user sense=deny file=/etc/vsftpd/ftpusers onerr=succeed
-auth       required	pam_shells.so
-#auth       include	password-auth
-auth       sufficient   pam_krb5.so
 
-#account    include	password-auth
-account     sufficient  pam_krb5.so
-
-session    required     pam_loginuid.so
-#session    include	password-auth
-session    sufficient   pam_krb5.so
  ```
 
 
  ```bash
-[root@kftp docker]# useradd tania
+
  ```
 
  ```bash
-[root@kftp docker]# echo "primer fitxer per tania" > /var/ftp/prova01.txt
+
  ```
  
   ```bash
-[root@kftp docker]# cat startup.sh 
-#!/bin/bash
-/usr/sbin/vsftpd /etc/vsftpd/vsftpd.conf
+
 
  ```
 
