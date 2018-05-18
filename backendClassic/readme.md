@@ -15,7 +15,7 @@ Ssh Kerberitzat [ksshserver](https://github.com/isx434324/kerberosproject/tree/m
 
 FTP Kerberitzat [kftpserver](https://github.com/isx434324/kerberosproject/tree/master/backendClassic/kftpserver)
 
-Servei2 Kerberitzat [kservice2server](https://github.com/isx434324/kerberosproject/tree/master/backendClassic/kservice2server)
+Imap Kerberitzat [kimapserver](https://github.com/isx434324/kerberosproject/tree/master/backendClassic/kservice2server)
 
 ### Hostnames and ips
 
@@ -56,7 +56,7 @@ The user obtain the ticket
 ### Model3
 FTP Kerberized
 
-How a server ftp use kerberos for the autentication of the ftp clients.
+How a server ftp use kerberos for the clients authentication.
 Add ftp to the kerberos keytab
 
 Configure PAM for using the module pam_krb5.so
@@ -65,7 +65,7 @@ Add a user (without passwrod unix) in ftp server, the same client must exist on 
 The ftp client try to acces to the service ftp and use the  kerberos passwrod to authenticate itself.
 
 ### Model4
-Servei2 Kerberitzat
+Imap Kerberitzat
 
 How the service use kerberos for the autentication of a client unix that use the service
 Add service to the kerberos keytab
