@@ -1,27 +1,27 @@
-# Model 3 - FTP Kerberized
+# Model 4 - IMAP Kerberized
 
 ## Features
 
-In this model, we will perform a FTP Server using kerberos authentication.
+In this model, we will perform an IMAP server using kerberos authentication.
 
 ## Instalation
-### Hostnames and our ips
+### Hostnames and ips
 
 - Kerberos Server: krb.edt.org 172.11.0.2
-- Kerberos Server: krb.edt.org 172.11.0.2
+- IMAP Server: krb.edt.org 172.11.0.2
+RECORDA FER LA PROVA DESDE EL CLIENT
 
-RECUERDA DE FER LA PROVA DESDE EL CLIENT
 
 #### Create image
 _As we are in the directori [kftpserver](https://github.com/isx434324/kerberosproject/backendClassic/kftpserver)_
 
  ```bash
- # docker build -t kftpserver .
+ # docker build -t kimapserver .
  ```
  
 #### Run container for kerberos server
  ```bash
- # docker run --name kftpserver --hostname kftpserver --net kerberos --ip 172.11.0.5  -d kftpserver
+ # docker run --name kimapserver --hostname kftpserver --net kerberos --ip 172.11.0.6  -d kftpserver
  ```
 
 As the container is not interactive, you can acces:
@@ -101,6 +101,7 @@ Dockerfile  filetania.txt  krb5.conf  system-auth
   ```bash
 [root@kclient docker]# cat filetania.txt 
 primer fitxer per tania
+
 
  ```
 

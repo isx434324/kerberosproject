@@ -24,7 +24,8 @@ Imap Kerberitzat [kimapserver](https://github.com/isx434324/kerberosproject/tree
 - Client Unix/PAM: kclient 172.11.0.3
 - SSH Kerberitzat: ksshserver 172.11.0.4
 - FTP Kerberitzat: kftpserver 172.11.0.5
-- Service2 Kerberitzat: kservice2server 172.11.0.6
+- IMAP Kerberitzat: kimapserver 172.11.0.6
+- LDAP Server: cldapserver 172.11.0.7
 
 ### Servidor Kerberos
 Manipulation and treatment of the kerberos database
@@ -49,15 +50,14 @@ How the service ssh use kerberos for the autentication of a client unix that use
 Add ssh to the kerberos keytab
 
 Add user to kerberos database
-The user obtain the ticket
-[client@localhost]$ ssh client@sshserver don't require password
+The user obtain the ticket.
+The user try to do a SSH session and doesn't require password because already has the kerberos credentials.
 
 
 ### Model3
 FTP Kerberized
 
 How a server ftp use kerberos for the clients authentication.
-Add ftp to the kerberos keytab
 
 Configure PAM for using the module pam_krb5.so
 Add a user (without passwrod unix) in ftp server, the same client must exist on kerberos database.
@@ -67,12 +67,14 @@ The ftp client try to acces to the service ftp and use the  kerberos passwrod to
 ### Model4
 Imap Kerberitzat
 
-How the service use kerberos for the autentication of a client unix that use the service
-Add service to the kerberos keytab
+How a server imap use kerberos for clients authentication.
 
-Add user to kerberos database
-The user obtain the ticket
-when the user use the service don't require password
+Configure PAM for using the module pam_krb5.so
+Add a user (without passwrod unix) in imap server, the same client must exist on kerberos database.
+
+The ftp client try to acces to the service ftp using telnet and use the  kerberos passwrod to authenticate itself.
+
+
 
 
 
