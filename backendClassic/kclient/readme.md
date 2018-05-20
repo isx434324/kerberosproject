@@ -8,12 +8,9 @@ It must exist an account  on the kerberos server database with the name of the u
 Assume the [Kerberos](https://github.com/isx434324/kerberosproject/tree/master/backendClassic/krb.edt.org) and [LDAP](https://github.com/isx434324/kerberosproject/tree/master/backendClassic/ldap.edt.org) Servers are running.
 
 ## Instalation
-### Hostnames and our ips
+### Hostname and ip
 
-- Kerberos Server: krb.edt.org   172.11.0.2
 - Client Unix/PAM: kclient       172.11.0.3
-- LDAP server:     ldap.edt.org  172.11.0.6
-
 
 #### Create image
 
@@ -29,6 +26,10 @@ Assume the [Kerberos](https://github.com/isx434324/kerberosproject/tree/master/b
  ```
 
 In this model it's only necessary to have the client interactive.
+
+ ```bash
+    docker exec -it kclient /bin/bash
+ ```
 
 Prove the client can use the LDAP users (pau, pere, anna..).
 
@@ -63,16 +64,29 @@ jordi:*:5004:100:Jordi Mas:/tmp/home/jordi:
 admin:*:10:10:Administrador Sistema:/tmp/home/admin:
  ``` 
 
-Note that the user (In this case pere) must have an account in the kerberos server database. (To create it see the section [Principals](https://github.com/isx434324/kerberosproject/tree/master/backendClassic/krb.edt.org) in the kerberos management documentation.)
-We can see if pere exists in kerberos database:
+Note that the user must have an account in the kerberos server database. (To create it see the section [Principals](https://github.com/isx434324/kerberosproject/tree/master/backendClassic/krb.edt.org) in the kerberos management documentation.).
+
+Prove user exists in kerberos database:
 
  ```bash
-listprincs
+[root@kclient docker]# kadmin -p tania/admin -q "listprincs"
+Authenticating as principal tania/admin with password.
+Password for tania/admin@EDT.ORG: 
+K/M@EDT.ORG
+ftp/kimapserver@EDT.ORG
+host/cldapserver@EDT.ORG
+kadmin/7537780ad6ad@EDT.ORG
+kadmin/admin@EDT.ORG
+kadmin/changepw@EDT.ORG
+kiprop/7537780ad6ad@EDT.ORG
+krbtgt/EDT.ORG@EDT.ORG
+pere@EDT.ORG
+tania/admin@EDT.ORG
+tania@EDT.ORG
  ``` 
- 
 
-As we have pau in the kerberos and ldap database we can login using the kerberos password (kpau)
-Do the login with tania to not have the permissions directly from root.
+As we have pau in the kerberos and ldap database we can login using the kerberos password kpau. 
+(First login as tania to not have the permissions directly from root.)
 
  ```bash
 [root@kclient docker]# su tania
@@ -90,7 +104,7 @@ Creating directory '/tmp/home/pau'.
  ``` 
 
 
-If the user was properly authenticated will have a ticket from the kerberos server
+If the user was properly authenticated will have a ticket from the kerberos server.
 
  ```bash
 -sh-4.3$ klist 
