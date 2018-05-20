@@ -11,11 +11,13 @@ Kerberos Server [krb.edt.org](https://github.com/isx434324/kerberosproject/tree/
 
 Client Unix/PAM [kclient](https://github.com/isx434324/kerberosproject/tree/master/backendClassic/kclient)
 
-Ssh Kerberitzat [ksshserver](https://github.com/isx434324/kerberosproject/tree/master/backendClassic/ksshserver)
+Ssh Kerberized [ksshserver](https://github.com/isx434324/kerberosproject/tree/master/backendClassic/ksshserver)
 
-FTP Kerberitzat [kftpserver](https://github.com/isx434324/kerberosproject/tree/master/backendClassic/kftpserver)
+FTP Kerberized [kftpserver](https://github.com/isx434324/kerberosproject/tree/master/backendClassic/kftpserver)
 
-Imap Kerberitzat [kimapserver](https://github.com/isx434324/kerberosproject/tree/master/backendClassic/kimapserver)
+Imap Kerberized [kimapserver](https://github.com/isx434324/kerberosproject/tree/master/backendClassic/kimapserver)
+
+LDAP Server [ldap.edt.org](https://github.com/isx434324/kerberosproject/tree/master/backendClassic/ldap.edt.org)
 
 ### Hostnames and ips
 
@@ -25,7 +27,7 @@ Imap Kerberitzat [kimapserver](https://github.com/isx434324/kerberosproject/tree
 - SSH Kerberitzat: ksshserver 172.11.0.4
 - FTP Kerberitzat: kftpserver 172.11.0.5
 - IMAP Kerberitzat: kimapserver 172.11.0.6
-- LDAP Server: cldapserver 172.11.0.7
+- LDAP Server: ldap.edt.org 172.11.0.7
 
 ### Servidor Kerberos
 Manipulation and treatment of the kerberos database
@@ -38,43 +40,97 @@ Manipulation and treatment of the kerberos database
 
 ### Model1
 Client Unix/PAM
+Process of the kerberos authentication of a user Unix having the account information in a server LDAP and the password in the Kerberos Server.
 
-Process of the kerberos authentication of a user Unix without password.
+ ```bash
+$ su - user
+Password: kerberos_password
+Creating directory '/tmp/home/user'.
+-sh-4.3$ pwd
+/tmp/home/pau
+ ```
 
-su user
-require kerberos password
 
 ### Model2
 Ssh Kerberitzat
-How the service ssh use kerberos for the autentication of a client unix that use ssh.
-Add ssh to the kerberos keytab
+The use of the service SSH using kerberos credentials instead of a local/unix password fot the user authentication.
 
-Add user to kerberos database
-The user obtain the ticket.
-The user try to do a SSH session and doesn't require password because already has the kerberos credentials.
 
+ ```bash
+[root@kclient docker]# kinit tania
+Password for tania@EDT.ORG: ktania
+ ```
+ ```bash
+ [root@kclient docker]# ssh tania@ksshserver
+The authenticity of host 'ksshserver (172.11.0.4)' can't be established.
+ECDSA key fingerprint is SHA256:BSe2q+Ce8nKbsMCd+QHhpY25TdUDgnGaiNeF4AItyPA.
+ECDSA key fingerprint is MD5:12:90:86:11:ee:20:1f:d1:bf:0b:12:aa:cf:9a:33:31.
+Are you sure you want to continue connecting (yes/no)? yes
+Warning: Permanently added 'ksshserver,172.11.0.4' (ECDSA) to the list of known hosts.
+[tania@ksshserver ~]$ logout
+Connection to ksshserver closed.
+ ```
 
 ### Model3
 FTP Kerberized
 
-How a server ftp use kerberos for the clients authentication.
+Server FTP use kerberos for clients authentication using module pam_krb5.so.
 
-Configure PAM for using the module pam_krb5.so
-Add a user (without passwrod unix) in ftp server, the same client must exist on kerberos database.
+Having the principal in the kerberos database it's possible to use the service FTP even without a unix password.
 
-The ftp client try to acces to the service ftp and use the  kerberos passwrod to authenticate itself.
+ ```bash
+[root@kftp docker]# useradd tania
+ 
+[root@kclient docker]# ftp 172.11.0.5
+Connected to 172.11.0.5 (172.11.0.5).
+Trying ::1...
+Connected to localhost (::1).
+220 Welcome to FTP service, password kerberos.
+Name (localhost:root): tania
+331 Please specify the password.
+Password: ktania
+230 Login successful.
+
+Remote system type is UNIX.
+Using binary mode to transfer files.
+
+ftp> ls
+229 Entering Extended Passive Mode (|||27840|)
+150 Here comes the directory listing.
+226 Directory send OK.
+
+ftp> get /var/ftp/prova01.txt filetania.txt
+local: filetania.txt remote: /var/ftp/prova01.txt
+227 Entering Passive Mode (172,11,0,11,24,0).
+150 Opening BINARY mode data connection for /var/ftp/prova01.txt (14 bytes).
+226 Transfer complete.
+14 bytes received in 0.000214 secs (65.42 Kbytes/sec)
+
+ftp> quit
+221 Goodbye.
+ ```
 
 ### Model4
 Imap Kerberitzat
 
-How a server imap use kerberos for clients authentication.
+Servei IMAP use kerberos for clients authentication using module pam_krb5.so even without a unix password.
+Note that the principal must exist in kerberos database.
 
-Configure PAM for using the module pam_krb5.so
-Add a user (without passwrod unix) in imap server, the same client must exist on kerberos database.
+ ```bash
+[root@kimapserver docker]# telnet localhost 143
+Trying ::1...
+Connected to localhost.
+Escape character is '^]'.
+* OK [CAPABILITY IMAP4REV1 I18NLEVEL=1 LITERAL+ SASL-IR LOGIN-REFERRALS STARTTLS] localhost IMAP4rev1 2007f.404 at Wed, 16 May 2018 09:47:02 +0000 (UTC)
 
-The ftp client try to acces to the service ftp using telnet and use the  kerberos passwrod to authenticate itself.
+a login pere kpere
+a OK [CAPABILITY IMAP4REV1 I18NLEVEL=1 LITERAL+ IDLE UIDPLUS NAMESPACE CHILDREN MAILBOX-REFERRALS BINARY UNSELECT ESEARCH WITHIN SCAN SORT THREAD=REFERENCES THREAD=ORDEREDSUBJECT MULTIAPPEND]
 
+User pere authenticated
 
-
-
+a logout
+* BYE kimapserver IMAP4 rev1 server terminating connection
+a OK LOGOUT completed
+Connection closed by foreign host.
+ ```
 
