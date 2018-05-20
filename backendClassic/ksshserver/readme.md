@@ -6,47 +6,41 @@ In this model, we will perform a SSH Server that user Kerberos Authentication.
 
 ## Features
 
-In this model we supossed to have the kerberos server running. (See [krb.edt.org](https://github.com/isx434324/kerberosproject/backendClassic/krb.edt.org)) and one interactive client to do the ssh session (See [kclient](https://github.com/isx434324/kerberosproject/backendClassic/kclient))
-We are going to see how a client ssh (kclient) can connect to a remote sshserver using his kerberos credentials instead of the local unix password.
+In this model we supossed to have the [kerberos](https://github.com/isx434324/kerberosproject/tree/master/backendClassic/krb.edt.org) and [SSH](https://github.com/isx434324/kerberosproject/tree/master/backendClassic/ksshserver) server running.
+We are going to see how a client can connect to a remote SSH server using his kerberos credentials instead of local unix password.
 
 ## Instalation
-### Hostnames and ips
-
-- Kerberos Server: krb.edt.org 172.11.0.2
-- Kclient:         kclient     172.11.0.3
-- SSH Server:      ksshserver  172.11.0.4
 
 #### Create image
-_As we are in the directori [ksshserver](https://github.com/isx434324/kerberosproject/backendClassic/ksshserver)_
 
  ```bash
  # docker build -t ksshserver .
  ```
 
-#### Run container SSH server
+#### Run container
  ```bash
- # docker run --name ksshserver --hostname ksshserver --net kerberos --ip 172.11.0.4  -d ksshserver
+ # docker run --name ksshserver --hostname ksshserver --net kerberos --privileged --ip 172.11.0.4  -d ksshserver
  ```
 
-As the containers are not interactive, you can acces:
+As the container is not interactive, you can acces:
 
     docker exec -it ksshserver /bin/bash
-Add the user tania without a unix password 
+
+Add the user (Note it doesnt have a password already)
  ```bash
 [root@ksshserver docker]# useradd tania
-
  ```
 
-Having the ssh and kerberos running and using the user tania/admin that has privileges in the kerberos server we are going to create a new principal for the service and add the service to the keytab.
+Using one with privileges in the kerberos server, create a new principal for the service SSH and add it to the keytab.
 
  ```bash
- [root@ksshserver docker]# kadmin -p tania/admin -w ktania -q "addprinc -rand>
+[root@ksshserver docker]# kadmin -p tania/admin -w ktania -q "addprinc -rand>
 Authenticating as principal tania/admin with password.
 WARNING: no policy specified for host/ksshserver@EDT.ORG; defaulting to no policy
 Principal "host/ksshserver@EDT.ORG" created.
  
  
- [root@ksshserver docker]# kadmin -p tania/admin -w ktania -q "ktadd -k /etc/krb5.keytab host/ksshserver"
+[root@ksshserver docker]# kadmin -p tania/admin -w ktania -q "ktadd -k /etc/krb5.keytab host/ksshserver"
  Authenticating as principal tania/admin with password.
 Entry for principal host/ksshserver with kvno 2, encryption type aes256-cts-hmac-sha1-96 added to keytab WRFILE:/etc/krb5.keytab.
 Entry for principal host/ksshserver with kvno 2, encryption type aes128-cts-hmac-sha1-96 added to keytab WRFILE:/etc/krb5.keytab.
