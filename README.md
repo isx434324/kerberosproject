@@ -24,40 +24,36 @@ We are going to walk through the backend types of the Kerberos database (Classic
 In an environment that provides network services, you use client programs to request services
 from server programs that are somewhere on the network.
 
-####Kerberos Tickets
-
+#### Kerberos Tickets
 In Kerberos, the service daemon allows you to login to a remote machine if you can
 provide the daemon a Kerberos ticket which proves your identity. In addition to the ticket,
 you must also have possession of the corresponding ticket session key.
 
-The combination ofa ticket and the ticket’s session key is known as a **_credential_**.
+The combination of a _ticket_ and the _ticket’s session key_ is known as a **_credential_**.
 
 Typically, a client program automatically obtains credentials identifying the person using
 the client program.
 
-The credentials are obtained from a Kerberos server that resides some-
-where on the network. A Kerberos server maintains a database of user, server, and password
+The credentials are obtained from a Kerberos server that resides somewhere on the network. A Kerberos server maintains a database of user, server, and password
 information.
 
-#### The Kerberos Database
 
+#### The Kerberos Database
 Kerberos will give you credentials only if you have an entry in the Kerberos server’s Kerberos
 database. This database entry includes a Kerberos principal(often username) and your Kerberos password.
 
 Every Kerberos user must have an entry in this database.
 
-#### Kerberos Realms
 
+#### Kerberos Realms
 Each administrative domain will have its own Kerberos database or **_Realm_**, which contains informa-
 tion about the users and services for that particular site or administrative domain.
 
 #### The Ticket-Granting Ticket
-
 The ‘kinit’ command prompts for your password. If you enter it successfully, you will
 obtain your **_credentials_** (ticket-granting ticket and ticket session key) which gives you the right to use the ticket.
 
 #### Network Services and the Master Database
-
 The master database also contains entries for all network services that require Kerberos authentication.
 
 This service must be registered in the Kerberos database, using the proper service name,
@@ -73,7 +69,6 @@ The instance, ‘laughter.mit.edu’, names the specific machine that is offerin
 
 
 #### The Keytab File
-
 For each service, there must be a _service key_ known only by Kerberos and the service.
 
 On the Kerberos server, the service key is stored in the Kerberos database.
@@ -82,7 +77,6 @@ keytabs.
 
 
 #### The User/Kerberos Interaction
-
 1. You login to the workstation and use the ‘kinit’ command to get a ticket-granting
 ticket. This command prompts you for your Kerberos password.
 
