@@ -11,8 +11,9 @@ COPY krb5.conf /etc/
 COPY ldap.conf /etc/openldap/.
 COPY cacert.pem /etc/openldap/certs/.
 COPY nslcd.conf /etc/.
+COPY nsswitch.conf /etc/.
 RUN rm -rf /etc/pam.d/system-auth
 COPY system-auth /etc/pam.d/ 
 WORKDIR /opt/docker
-CMD ["/bin/bash"]
+CMD ["/opt/docker/startup.sh"]
 

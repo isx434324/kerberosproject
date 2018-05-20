@@ -14,24 +14,21 @@ Manipulation and treat
 - Kerberos Server: krb.edt.org 172.11.0.2
 
 #### Create image
-_As we are in the directori [cldapsever](https://github.com/isx434324/kerberosproject/tree/master/backendClassic/cldapserver)_
 
  ```bash
- # docker build -t cldapserver .
+ # docker build -t ldap.edt.org .
  ```
  
 #### Run container for kerberos server
  ```bash
- # docker run --name cldapserver --hostname cldapserver --net kerberos --ip 172.11.0.7  -d cldapserver
+ # docker run --name ldap.edt.org --hostname ldap.edt.org --net kerberos --ip 172.11.0.7  -d ldap.edt.org
  ```
 
 As the container is not interactive, you can acces:
 
  ```bash
-    docker exec -it cldapserver /bin/bash
+    docker exec -it ldap.edt.org /bin/bash
  ```
-
-
 
 
 Per consultar funcionament de tls

@@ -1,3 +1,3 @@
 #!/bin/bash
-/usr/sbin/nslcd
 /usr/sbin/nscd
+/usr/sbin/nslcd --nofork
