@@ -10,11 +10,11 @@ In this model, we will perform an IMAP server using kerberos authentication.
 - Kerberos Server: krb.edt.org 172.11.0.2
 - IMAP Server: kimapserver 172.11.0.6
 
-RECORDA FER LA PROVA DESDE EL CLIENT
+FER LA PROVA DESDE EL CLIENT
 
 
 #### Create image
-_Being in the directory [kimapserver](https://github.com/isx434324/kerberosproject/tree/master/backendClassic/kimapserver)
+Being in the directory [kimapserver](https://github.com/isx434324/kerberosproject/tree/master/backendClassic/kimapserver)
 
  ```bash
  # docker build -t kimapserver .
