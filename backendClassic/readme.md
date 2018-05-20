@@ -29,6 +29,16 @@ LDAP Server [ldap.edt.org](https://github.com/isx434324/kerberosproject/tree/mas
 - IMAP Kerberitzat: kimapserver 172.11.0.6
 - LDAP Server: ldap.edt.org 172.11.0.7
 
+
+### Create Docker Network
+
+_This is important for an easily comunication between servers and clients._
+
+ ```bash
+ # docker network create --subnet 172.11.0.0/16 kerberos
+ ```
+
+
 ### Servidor Kerberos
 Manipulation and treatment of the kerberos database
 

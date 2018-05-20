@@ -18,23 +18,9 @@ Manipulation and treatment of the kerberos database
 
 
 ## Instalation
-### Hostnames and our ips
+### Hostname and ip
 
 - Kerberos Server: krb.edt.org 172.11.0.2
-
-
-#### Create Docker Network
-
-_This is important for an easily comunication between servers and clients._
-
- ```bash
- # docker network create --subnet 172.11.0.0/16 kerberos
- ```
-
-If you want to salt the two next steps just use my image:
- ```bash
- # docker run --name krb.edt.org --hostname pkserver --net kerberos --ip 172.11.0.2  -d isx434324/backendclasic:pkserver
- ```
 
 #### Create image
 _As we are in the directori [krb.edt.org](https://github.com/isx434324/kerberosproject/backendClassic/krb.edt.org)_

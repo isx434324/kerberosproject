@@ -1,48 +1,41 @@
-# Model 2 - Complete authentication of a client UNIX with PAM.
+# Model 2 - Complete authentication of a client UNIX using PAM.
 
 ## Overview
 
-Using a Kerberos Server with a classic backend we are going to user kerberos authentication having the users information in a ldapserver and the password in the kerberos server.
-
-
-## Features
+Using a Kerberos Server with a classic backend we are going to use kerberos authentication having the users information in a ldapserver and the password in the kerberos server.
 It must exist an account  on the kerberos server database with the name of the user to get the ticket.
+
+Assume the [Kerberos](https://github.com/isx434324/kerberosproject/tree/master/backendClassic/krb.edt.org) and [LDAP](https://github.com/isx434324/kerberosproject/tree/master/backendClassic/ldap.edt.org) Servers are running.
 
 ## Instalation
 ### Hostnames and our ips
 
-- Kerberos Server: krb.edt.org  172.11.0.2
-- Client Unix/PAM: kclient      172.11.0.3
-- LDAP server:     cldapserver  172.11.0.6
+- Kerberos Server: krb.edt.org   172.11.0.2
+- Client Unix/PAM: kclient       172.11.0.3
+- LDAP server:     ldap.edt.org  172.11.0.6
 
 
-
-#### Create images
-Using the directories
-
-[cldapserver](https://github.com/isx434324/kerberosproject/tree/master/backendClassic/cldapserver)
-[kclient](https://github.com/isx434324/kerberosproject/tree/master/backendClassic/kclient)
+#### Create image
 
  ```bash
  # docker build -t kclient . 
+ # docker build -t ldap.edt.org .
  ```
 
  
 #### Running containers
  ```bash
+ # docker run --name cldapserver --hostname cldapserver --net kerberos --ip 172.11.0.6 -d ldap.edt.org
  # docker run --name kclient --hostname kclient --net kerberos --ip 172.11.0.3 -it kclient
- # docker run --name cldapserver --hostname cldapserver --net kerberos --ip 172.11.0.6 -it cldapserver
+ 
  ```
 
 In this model it's only necessary to have the client interactive.
 
 
-prove the conection with the cldapserver
+Prove the conection with the cldapserver
 
  ```bash
-
-
-
 [root@kclient docker]# getent passwd 
 root:x:0:0:root:/root:/bin/bash
 bin:x:1:1:bin:/bin:/sbin/nologin
@@ -71,11 +64,9 @@ anna:*:5002:600:Anna Pou:/tmp/home/anna:
 marta:*:5003:600:Marta Mas:/tmp/home/marta:
 jordi:*:5004:100:Jordi Mas:/tmp/home/jordi:
 admin:*:10:10:Administrador Sistema:/tmp/home/admin:
-
-
  ``` 
 
-Note that the user (In this case pere) must have an account in the kerberos server database. (See the section [Principals](https://github.com/isx434324/kerberosproject/tree/master/backendClassic/krb.edt.org) in the kerberos management documentation.)
+Note that the user (In this case pere) must have an account in the kerberos server database. (To create it see the section [Principals](https://github.com/isx434324/kerberosproject/tree/master/backendClassic/krb.edt.org) in the kerberos management documentation.)
 We can see if pere exists in kerberos database:
 
  ```bash
@@ -88,9 +79,11 @@ Do the login with tania to not have the permissions directly from root.
 
  ```bash
 [root@kclient docker]# su tania
+
 [tania@kclient docker]$ su - pau
-Password: 
+Password: pau
 su: Authentication failure
+
 [tania@kclient docker]$ su - pau
 Password: kpau
 Creating directory '/tmp/home/pau'.
@@ -100,7 +93,7 @@ Creating directory '/tmp/home/pau'.
  ``` 
 
 
-If the user was properly authenticated must have a ticket from the kerberos server
+If the user was properly authenticated will have a ticket from the kerberos server
 
  ```bash
 -sh-4.3$ klist 

@@ -13,9 +13,9 @@ We are going to walk through the backend types of the Kerberos database ([Classi
 
 - Model of the Kerberos authentication process (Unix, SSH , PAM, LDAP, Kerberos).
 - Manipulation and treatment of kerberos database.
-	-Policies de Passwords
-	-Privileges
-	-Account Lockout
+	- Policies de Passwords
+	- Privileges
+	- Account Lockout
 - Imports, exports and backups of kerberos database. 
 - Addition and update of principals (basic treatment) and services (keytab files).
 
