@@ -36,6 +36,7 @@ Manipulation and treatment of the kerberos database
 
 ### Model1
 Client Unix/PAM
+
 Process of the kerberos authentication of a user Unix having the account information in a server LDAP and the password in the Kerberos Server.
 
  ```bash
@@ -49,6 +50,7 @@ Creating directory '/tmp/home/user'.
 
 ### Model2
 Ssh Kerberitzat
+
 The use of the service SSH using kerberos credentials instead of a local/unix password fot the user authentication.
 
 

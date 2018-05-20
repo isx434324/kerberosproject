@@ -18,22 +18,19 @@ Assume the [Kerberos](https://github.com/isx434324/kerberosproject/tree/master/b
 #### Create image
 
  ```bash
- # docker build -t kclient . 
- # docker build -t ldap.edt.org .
+ # docker build -t kclient .
  ```
 
  
-#### Running containers
+#### Run container
  ```bash
- # docker run --name cldapserver --hostname cldapserver --net kerberos --ip 172.11.0.6 -d ldap.edt.org
  # docker run --name kclient --hostname kclient --net kerberos --ip 172.11.0.3 -it kclient
  
  ```
 
 In this model it's only necessary to have the client interactive.
 
-
-Prove the conection with the cldapserver
+Prove the client can use the LDAP users (pau, pere, anna..).
 
  ```bash
 [root@kclient docker]# getent passwd 

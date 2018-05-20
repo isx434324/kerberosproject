@@ -3,7 +3,7 @@
 #servidor kerberos detached
 
 FROM fedora:24
-MAINTAINER tania@edt "ASIX kerberos server Tania 2018"
+MAINTAINER tania@edt "ASIX kerberos server Backend Classic 2018"
 RUN dnf -y install nmap iputils iproute krb5-libs krb5-server krb5-workstation
 RUN mkdir /opt/docker
 COPY * /opt/docker/
