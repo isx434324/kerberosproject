@@ -85,21 +85,21 @@ tania/admin@EDT.ORG
 tania@EDT.ORG
  ``` 
 
-As we have pau in the kerberos and ldap database we can login using the kerberos password kpau. 
+As we have pau in the kerberos and ldap database we can login using the kerberos password kpere. 
 (First login as tania to not have the permissions directly from root.)
 
  ```bash
 [root@kclient docker]# su tania
 
-[tania@kclient docker]$ su - pau
-Password: pau
+[tania@kclient docker]$ su - pere
+Password: pere
 su: Authentication failure
 
-[tania@kclient docker]$ su - pau
-Password: kpau
-Creating directory '/tmp/home/pau'.
+[tania@kclient docker]$ su - pere
+Password: kpere
+Creating directory '/tmp/home/pere'.
 -sh-4.3$ pwd
-/tmp/home/pau
+/tmp/home/pere
 
  ``` 
 
@@ -109,7 +109,7 @@ If the user was properly authenticated will have a ticket from the kerberos serv
  ```bash
 -sh-4.3$ klist 
 Ticket cache: DIR::/run/user/5000/krb5cc_hHGf15/tktzaK5kX
-Default principal: pau@EDT.ORG
+Default principal: pere@EDT.ORG
 
 Valid starting     Expires            Service principal
 05/18/18 09:19:59  05/19/18 09:19:59  krbtgt/EDT.ORG@EDT.ORG
