@@ -20,7 +20,7 @@ We are going to walk through the backend types of the Kerberos database ([Classi
 - Addition and update of principals (basic treatment) and services (keytab files).
 
 
-### Introduccion
+### Introduction
 In an environment that provides network services, you use client programs to request services
 from server programs that are somewhere on the network.
 

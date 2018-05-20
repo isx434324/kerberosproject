@@ -5,29 +5,15 @@
 In these models, we will perform a Server Kerberos with a classic backend, a client unix that will use PAM for the kerberos autentication instead of the password and three different services that will work as kerberos client.
 
 
-##Containers
-
-Kerberos Server [krb.edt.org](https://github.com/isx434324/kerberosproject/tree/master/backendClassic/krb.edt.org)
-
-Client Unix/PAM [kclient](https://github.com/isx434324/kerberosproject/tree/master/backendClassic/kclient)
-
-Ssh Kerberized [ksshserver](https://github.com/isx434324/kerberosproject/tree/master/backendClassic/ksshserver)
-
-FTP Kerberized [kftpserver](https://github.com/isx434324/kerberosproject/tree/master/backendClassic/kftpserver)
-
-Imap Kerberized [kimapserver](https://github.com/isx434324/kerberosproject/tree/master/backendClassic/kimapserver)
-
-LDAP Server [ldap.edt.org](https://github.com/isx434324/kerberosproject/tree/master/backendClassic/ldap.edt.org)
-
 ### Hostnames and ips
 
 - Network: kerberos 172.11.0.0/16
-- Kerberos Server: krb.edt.org 172.11.0.2
-- Client Unix/PAM: kclient 172.11.0.3
-- SSH Kerberitzat: ksshserver 172.11.0.4
-- FTP Kerberitzat: kftpserver 172.11.0.5
-- IMAP Kerberitzat: kimapserver 172.11.0.6
-- LDAP Server: ldap.edt.org 172.11.0.7
+- Kerberos Server: [krb.edt.org](https://github.com/isx434324/kerberosproject/tree/master/backendClassic/krb.edt.org) 172.11.0.2
+- Client Unix/PAM: [kclient](https://github.com/isx434324/kerberosproject/tree/master/backendClassic/kclient) 172.11.0.3
+- SSH Kerberitzat: [ksshserver](https://github.com/isx434324/kerberosproject/tree/master/backendClassic/ksshserver) 172.11.0.4
+- FTP Kerberitzat: [kftpserver](https://github.com/isx434324/kerberosproject/tree/master/backendClassic/kftpserver) 172.11.0.5
+- IMAP Kerberitzat: [kimapserver](https://github.com/isx434324/kerberosproject/tree/master/backendClassic/kimapserver) 172.11.0.6
+- LDAP Server: [ldap.edt.org](https://github.com/isx434324/kerberosproject/tree/master/backendClassic/ldap.edt.org) 172.11.0.7
 
 
 ### Create Docker Network
@@ -39,7 +25,7 @@ _This is important for an easily comunication between servers and clients._
  ```
 
 
-### Servidor Kerberos
+### Server Kerberos
 Manipulation and treatment of the kerberos database
 
 - Kadmin/kadmin.local
