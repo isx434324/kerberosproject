@@ -14,21 +14,21 @@ RECORDA FER LA PROVA DESDE EL CLIENT
 
 
 #### Create image
-_Being in the directori [kimapserver](https://github.com/isx434324/kerberosproject/backendClassic/kimapserver)_
+_Being in the directory [kimapserver](https://github.com/isx434324/kerberosproject/backendClassic/kimapserver)_
 
  ```bash
  # docker build -t kimapserver .
  ```
  
-#### Run container for kerberos server
+#### Run container
  ```bash
  # docker run --name kimapserver --hostname imappserver --net kerberos --privileged --ip 172.11.0.6  -d kimapserver
  ```
 
+#### Procedure
+
 Active IMAP service in xinetd directory.
-
   ```bash
-
 [root@kimapserver docker]# vim /etc/xinetd.d/imap
 # default: off
 # description: The IMAP service allows remote users to access their mail using \
@@ -63,7 +63,6 @@ session    sufficient   pam_krb5.so
  ```
  
 Run the service.
-
  ```bash
 [root@kimapserver docker]# cat startup.sh
 #!/bin/bash
