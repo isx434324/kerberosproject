@@ -14,7 +14,7 @@ RECORDA FER LA PROVA DESDE EL CLIENT
 
 
 #### Create image
-_Being in the directory [kimapserver](https://github.com/isx434324/kerberosproject/backendClassic/kimapserver)_
+_Being in the directory [kimapserver](https://github.com/isx434324/kerberosproject/tree/master/backendClassic/kimapserver)
 
  ```bash
  # docker build -t kimapserver .
