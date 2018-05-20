@@ -14,8 +14,6 @@ COPY kerberos.schema /etc/openldap/schema/
 RUN cp ca* /etc/openldap/certs/
 RUN cp server* /etc/openldap/certs/
 RUN /opt/docker/regeneradb.sh
-#RUN kdb5_ldap_util -D cn=admin,dc=edt,dc=org -w jupiter create -subtrees dc=edt,dc=org -r EDT.ORG -s -P masterkey
-#RUN echo -e "jupiter\njupiter" | kdb5_ldap_util -D cn=admin,dc=edt,dc=org -w jupiter stashsrvpw -f /etc/krb5kdc/admin.stash cn=admin,dc=edt,dc=org
 CMD ["/opt/docker/startupldap.sh"]
 EXPOSE 389 636
 
