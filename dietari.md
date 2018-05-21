@@ -1,21 +1,9 @@
-#Dietari
-
-**Lunes 23/04/2018**
-
-estudie para examen de sistemas
-
-**Martes 24/04/2018**
-
-examen de sistemas
-
-**Miercoles 25/04/2018**
-
-leer y ordenar un poco documentacion y ordres
+# Daily
 
 **Jueves 26/04/2018**
 
-Montar servidor amb backend clasic I estudiar eines de backup (krb5 dump)
-comenzar amb el de ldap, falla
+Montar servidor amb backend clasic I estudiar eines de backup (krb5 dump).
+Comenzar amb el de ldap, falla
 
 kdb5_util dump -verbose dumpfile
 kdb5_util dump -verbose dumpfile pak/admin@ENG.EXAMPLE.COM pak@ENG.EXAMPLE.COM
@@ -24,7 +12,7 @@ apagar serveis
 kdb5_util load -update -d database1 dumpfil
 engegar serveis
 
-**Viernes 27/04/2018 **
+**Viernes 27/04/2018**
 
 montar servidor amb backend ldap, crear els dns de kdc I kadmin, posar acls, falla al crear base de dades en server kerberos
 
@@ -76,14 +64,45 @@ May 02 08:17:30 pkserverc krb5kdc\[325](info): commencing operation
 
 **Jueves 03/05/2018**
 
-Continua sin hacer el bind al dn del kadmin!
-Documento mejor el backend clasic posant exemples de les ordres mes comuns para principals,
-policies i operacions globals
+Continua sin hacer el bind al dn del kadmin en el servidor kerberos con backend LDAP.
+Documento mejor el backend clasic posant exemples de les ordres mes comuns para principals, policies i operacions globals
 
 **Viernes 04/05/2018**
- 
+Hace el inicio del servicio posant directives amb -x en la ordre kadmind pero no es pot fer kadmin.local.
+
+**Lunes 07/05/2018**
+El kdc i dadmind se incian pero no detecta els principals de kerberos si es mira amb ldapsearch, nomes amb slapcat
+
+**Martes 08/05/2018**
+Torno a fer ldapserver with tls i ara si que llista amb ldapsearch pero continua sense poder fer el kadmiin.local.
 
 
+**Miercoles 09/05/2018**
+
+
+**Jueves 10/05/2018**
+
+
+
+**Viernres 11/05/2018**
+
+
+**Lunes 14/05/2018**
+
+
+**Martes 15/05/2018**
+
+
+**Miercoles 16/05/2018**
+
+
+
+**Jueves 17/05/2018**
+
+**Viernes 18/05/2018**
+
+**Lunes 21/05/2018**
+Comprobar que els servers funcionan per montar el dimarts.
 
 
 

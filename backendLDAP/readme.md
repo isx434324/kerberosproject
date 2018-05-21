@@ -12,8 +12,6 @@ This means we are going to store the kerberos database principals in a LDAP Serv
 - Kerberos and LDAP server: krbldap.edt.org 172.11.0.11
 
 #### Create image
-_Being in the directory_
-[krbldap.edt.org](https://github.com/isx434324/kerberosproject/tree/master/backendLDAP/krbldap.edt.org)
 
  ```bash
  # docker build -t krbldap.edt.org .
@@ -27,15 +25,12 @@ _Being in the directory_
 As the container is not interactive:
 
     docker exec -it krbldap.edt.org /bin/bash
- 
 
-The LDAP server is already running so we are going start directly with the creation of the _Kerberos database_.
 
-First step is configure the hosts in the server for establish comunication between Kerberos and LDAP adding the name of the LDAP server.
+Having the LDAP server already running, first step is configure the hosts in the server for establish comunication between Kerberos and LDAP.
 
  ```bash
 [root@krbldap docker]# vim /etc/hosts
-[root@krbldap docker]# cat /etc/hosts
 127.0.0.1	localhost
 ::1	localhost ip6-localhost ip6-loopback
 fe00::0	ip6-localnet
@@ -53,7 +48,7 @@ Note that is not recommended to put the passwords directly in the order.
 Initializing database for realm 'EDT.ORG'
  ```
 
-If everything is ok you can consult the principals created doing an ldapsearch.
+Consult the new principals created with kerberos schema.
 
  ```bash
 [root@krbldap docker]# ldapsearch -x -LLL dn
@@ -112,6 +107,7 @@ Create the stashfile for the database administrator.
 
  ```bash
 [root@krbldap docker]# mkdir /etc/krb5kdc/
+
 [root@krbldap docker]# kdb5_ldap_util -D cn=admin,dc=edt,dc=org stashsrvpw -f /etc/krb5kdc/admin.stash cn=admin,dc=edt,dc=org
 Password for "cn=admin,dc=edt,dc=org": kadmin
 Password for "cn=admin,dc=edt,dc=org": kadmin
@@ -147,7 +143,7 @@ kadmin/changepw@EDT.ORG
 kadmin/history@EDT.ORG
  ```
 
-It's possible to add principals. In this case add tania and tania/admin, the last one to prove the [acls](https://github.com/isx434324/kerberosproject/blob/master/backendLDAP/krbldap.edt.org/kadm5.acl) on the kerberos database.
+Add principals, one with permissions in [acl file](https://github.com/isx434324/kerberosproject/blob/master/backendLDAP/krbldap.edt.org/kadm5.acl) on kerberos database.
 
  ```bash
  [root@krbldap docker]# kadmin.local   
@@ -166,7 +162,7 @@ Re-enter password for principal "tania/admin@EDT.ORG": ktania
 Principal "tania/admin@EDT.ORG" created.
  ```
 
-Looking at the LDAP database.
+Check the new principals created with the kerberos schema.
 
  ```bash
  
