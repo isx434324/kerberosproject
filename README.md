@@ -6,9 +6,7 @@ Isx434324
 
 Network Informatic Systems Administration  - HISX2 2017-2018
 
-<img style="float: center" src="https://github.com/isx434324/kerberosproject/blob/master/fluffyasleep.jpg" width="600" height="365" >
-
-![alt fluffy](https://github.com/isx434324/kerberosproject/blob/master/fluffyasleep.jpg?raw=True)
+<img align="middle" src="https://github.com/isx434324/kerberosproject/blob/master/fluffyasleep.jpg" width="500" height="230" >
 
 ### Objective
 The present project consist in different implementation of Kerberos service in _Docker Containers_.
