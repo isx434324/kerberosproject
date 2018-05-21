@@ -2,7 +2,7 @@
 
 ## Features
 
-Having the [Kerberos](https://github.com/isx434324/kerberosproject/tree/master/backendClassic/krb.edt.org) and [kclient](https://github.com/isx434324/kerberosproject/tree/master/backendClassic/kclient) interactive we will perform an IMAP Server using kerberos authentication.
+Having the [Kerberos](https://github.com/isx434324/kerberosproject/tree/master/backendClassic/krb.edt.org) server running in background and [kclient](https://github.com/isx434324/kerberosproject/tree/master/backendClassic/kclient) interactive we will perform an IMAP Server using kerberos authentication.
 
 ## Instalation
 ### Hostname and ip
