@@ -26,7 +26,7 @@ As the container is not interactive, you can acces:
 
     docker exec -it ksshserver /bin/bash
 
-Add the user (Note it doesnt have a password already)
+Add the user (Note it doesn't have a password already)
  ```bash
 [root@ksshserver docker]# useradd tania
  ```
@@ -34,7 +34,7 @@ Add the user (Note it doesnt have a password already)
 Using one with privileges in the kerberos server, create a new principal for the service SSH and add it to the keytab.
 
  ```bash
-[root@ksshserver docker]# kadmin -p tania/admin -w ktania -q "addprinc -rand>
+[root@ksshserver docker]# kadmin -p tania/admin -w ktania -q "addprinc -randkey host/ksshserver"
 Authenticating as principal tania/admin with password.
 WARNING: no policy specified for host/ksshserver@EDT.ORG; defaulting to no policy
 Principal "host/ksshserver@EDT.ORG" created.
@@ -52,7 +52,7 @@ Entry for principal host/ksshserver with kvno 2, encryption type des-hmac-sha1 a
 Entry for principal host/ksshserver with kvno 2, encryption type des-cbc-md5 added to keytab WRFILE:/etc/krb5.keytab.
 
  ```
-We can see:
+See the a new principal host/ksshserver@EDT.ORG. for the SSH service:
 
  ```bash
 
@@ -60,7 +60,6 @@ We can see:
 Authenticating as principal tania/admin with password.
 K/M@EDT.ORG
 host/ksshserver@EDT.ORG
-imap/kimapserver@EDT.ORG
 kadmin/980b470dd63a@EDT.ORG
 kadmin/admin@EDT.ORG
 kadmin/changepw@EDT.ORG
@@ -71,18 +70,17 @@ tania/admin@EDT.ORG
 tania@EDT.ORG
 
  ```
- 
-Right, we have the principal host/ksshserver@EDT.ORG.
+
 Note that the unix user tania must also exist in the kerberos database to get the credentials.
 
+The client (server [kclient](https://github.com/isx434324/kerberosproject/tree/master/backendClassic/kclient)), get the credentials to start a ssh session.
 
-As a client, we are going to get the credentials to use the ssh service
  ```bash
 [root@kclient docker]# kinit tania
 Password for tania@EDT.ORG: ktania
  ```
  
-If the authentication was succesfull we'll have an output like this.
+If the authentication was succesfull, the client can list its credentials:
   ```bash
 [root@kclient docker]# klist
 Ticket cache: FILE:/tmp/krb5cc_0
@@ -94,7 +92,7 @@ Valid starting     Expires            Service principal
  ```
 
 
-Right we have the credentials, now we can acces to ksshserver without using a password because we are trusted for ssh by kerberos server.
+Acces to ksshserver without password because the credentials give previous authentication.
 
  ```bash
  [root@kclient docker]# ssh tania@ksshserver

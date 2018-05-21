@@ -30,7 +30,7 @@ Manipulation and treatment of the kerberos database
  
 #### Run container
  ```bash
- # docker run --name krb.edt.org --hostname pkserver --net kerberos --ip 172.11.0.2  -d krb.edt.org
+ # docker run --name krb.edt.org --hostname krb.edt.org --net kerberos --privileged --ip 172.11.0.2  -d krb.edt.org
  ```
 
 As the container is not interactive, you can acces:

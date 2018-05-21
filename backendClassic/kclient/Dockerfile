@@ -3,7 +3,7 @@
 
 FROM fedora:24
 MAINTAINER tania@edt "ASIX Client Unix PAM Tania 2018"
-RUN dnf -y install nmap iputils procps iproute krb5-libs krb5-workstation pam_krb5 openldap-clients nss-pam-ldapd
+RUN dnf -y install nmap iputils procps iproute krb5-libs krb5-workstation pam_krb5 openldap-clients nss-pam-ldapd openssh-clients
 RUN mkdir /opt/docker
 RUN useradd tania
 COPY * /opt/docker/
