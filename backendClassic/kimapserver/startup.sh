@@ -1,2 +1,2 @@
 #!/bin/bash
-/usr/sbin/xinetd
+/usr/sbin/xinetd -dontfork

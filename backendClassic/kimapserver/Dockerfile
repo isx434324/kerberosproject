@@ -9,7 +9,5 @@ COPY * /opt/docker/
 COPY imap /etc/xinetd.d/imap
 COPY imappam /etc/pam.d/imap
 COPY krb5.conf /etc/ 
-RUN useradd pere
-RUN useradd tania
 WORKDIR /opt/docker
 CMD ["/opt/docker/startup.sh"]
