@@ -70,9 +70,9 @@ Connection to ksshserver closed.
  ```
 
 ### Model3
-FTP Kerberized
+FTP with kerberos authentication
 
-Server FTP use kerberos for clients authentication using module pam_krb5.so.
+Server FTP use kerberos for clients authentication using module pam_krb5.
 
 Having the principal in the kerberos database it's possible to use the service FTP even without a unix password.
 
@@ -109,9 +109,9 @@ ftp> quit
  ```
 
 ### Model4
-Imap Kerberized
+Imap with kerberos authentication
 
-Servei IMAP use kerberos for clients authentication using module pam_krb5.so even without a unix password.
+Servei IMAP use kerberos for clients authentication (with module pam_krb5).
 Note that the principal must exist in kerberos database.
 
  ```bash

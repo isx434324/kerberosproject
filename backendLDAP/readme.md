@@ -3,7 +3,7 @@
 ## Overview
 
 In this model, we will perform a Server Kerberos with an LDAP server as backend.
-This means we are going to store the kerberos database principals in a LDAP Server (using a special schema for kerberos principals).
+This means we are going to store the kerberos database in a LDAP Server (using a special schema for kerberos principals).
 
 
 ## Instalation
