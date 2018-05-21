@@ -6,7 +6,7 @@ Isx434324
 
 Network Informatic Systems Administration  - HISX2 2017-2018
 
-<img align="middle" src="https://github.com/isx434324/kerberosproject/blob/master/fluffyasleep.jpg" width="500" height="230" >
+		<img align="middle" src="https://github.com/isx434324/kerberosproject/blob/master/fluffyasleep.jpg" width="500" height="230" >
 
 ### Objective
 The present project consist in different implementation of Kerberos service in _Docker Containers_.
@@ -114,5 +114,5 @@ ticket. This command prompts you for your Kerberos password.
 	The service program checks the ticket by using its own service key.
 	If the ticket is valid, the service daemon will let you user its service.
 
-![alt img1](https://github.com/isx434324/kerberosproject/blob/master/krb1.png?raw=true)
-![alt img2](https://github.com/isx434324/kerberosproject/blob/master/krb2.png?raw=true)
+		![alt img1](https://github.com/isx434324/kerberosproject/blob/master/krb1.png)
+		![alt img2](https://github.com/isx434324/kerberosproject/blob/master/krb2.png)
