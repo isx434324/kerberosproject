@@ -52,7 +52,7 @@ Entry for principal host/ksshserver with kvno 2, encryption type des-hmac-sha1 a
 Entry for principal host/ksshserver with kvno 2, encryption type des-cbc-md5 added to keytab WRFILE:/etc/krb5.keytab.
 
  ```
-See the a new principal host/ksshserver@EDT.ORG. for the SSH service:
+See new principal host/ksshserver@EDT.ORG. for the SSH service:
 
  ```bash
 

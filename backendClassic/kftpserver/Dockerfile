@@ -9,7 +9,6 @@ COPY * /opt/docker/
 COPY vsftpd.conf /etc/vsftpd/
 COPY krb5.conf /etc/ 
 COPY vsftpd /etc/pam.d/
-RUN useradd tania
 WORKDIR /opt/docker
 CMD ["/opt/docker/startup.sh"] 
 EXPOSE 20 21

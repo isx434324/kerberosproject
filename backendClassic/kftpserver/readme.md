@@ -2,18 +2,15 @@
 
 ## Features
 
-In this model, we will perform a FTP Server using kerberos authentication.
+Having [Kerberos](https://github.com/isx434324/kerberosproject/tree/master/backendClassic/krb.edt.org) and [kclient](https://github.com/isx434324/kerberosproject/tree/master/backendClassic/kclient) interactive we will perform a FTP Server using kerberos authentication.
+
 
 ## Instalation
-### Hostnames and ips
+### Hostname and ip
 
-- Kerberos Server: krb.edt.org 172.11.0.2
 - FTP Server: kftpserver 172.11.0.5
 
-FER LA PROVA DESDE EL CLIENT
-
 #### Create image
-_Being in the directory [kftpserver](https://github.com/isx434324/kerberosproject/backendClassic/kftpserver)_
 
  ```bash
  # docker build -t kftpserver .
@@ -29,7 +26,7 @@ As the container is not interactive, you can acces:
     docker exec -it kftpserver /bin/bash
 
 
-Configure the use of a PAM module in FTP daemon.
+Configure the use of PAM module in FTP daemon.
  
  ```bash
 [root@kftp docker]# vim /etc/pam.d/vsftpd
@@ -48,12 +45,12 @@ session    required     pam_loginuid.so
 session    sufficient   pam_krb5.so
  ```
 
-Add a user without unix password.
+Add user without unix password.
  ```bash
 [root@kftp docker]# useradd tania
  ```
 
-Create share file in FTP server.
+Create shared file in FTP server.
  ```bash
 [root@kftp docker]# echo "Hello Caramelloo!" > /var/ftp/prova01.txt
  ```
@@ -66,11 +63,11 @@ Start the service.
 
  ```
 
-Get the file created before using the kerberos password (ktania).
+As client get the file in ftpserver using kerberos password (ktania).
 
  ```bash
-[root@kclient docker]# ftp 172.11.0.11
-Connected to 172.11.0.11 (172.11.0.11).
+[root@kclient docker]# ftp kftpserver
+Connected to 172.11.0.5 (172.11.0.5).
 Trying ::1...
 Connected to localhost (::1).
 220 Welcome to FTP service, password kerberos.
@@ -101,7 +98,7 @@ ftp> quit
 The file is locally transfered.
  ```bash
 [root@kclient docker]# ls
-Dockerfile  filetania.txt  krb5.conf  system-auth
+Dockerfile  cacert.pem	filetania.txt  krb5.conf  ldap.conf  nslcd.conf  nsswitch.conf	readme.md  startup.sh  system-auth
 
 [root@kclient docker]# cat filetania.txt 
 Hello Caramelloo!

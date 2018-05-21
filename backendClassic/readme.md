@@ -49,7 +49,7 @@ Creating directory '/tmp/home/user'.
 
 
 ### Model2
-Ssh Kerberitzat
+Ssh Kerberized
 
 The use of the service SSH using kerberos credentials instead of a local/unix password fot the user authentication.
 
@@ -109,7 +109,7 @@ ftp> quit
  ```
 
 ### Model4
-Imap Kerberitzat
+Imap Kerberized
 
 Servei IMAP use kerberos for clients authentication using module pam_krb5.so even without a unix password.
 Note that the principal must exist in kerberos database.
