@@ -1,25 +1,25 @@
-# Planificacio projecte
+# Planificación proyecto
 
 El proyecto se divide segun la manera en que el servidor Kerberos almacena su base de datos, a esto le llamamos _backend_.
 
 ## Backend Classic
-Con el backend classic la base de datos se guarda en el mismo servidor Kerberos y por tanto tendria mas variedad en los modelos que implementaria.
+Con el backend classic la base de datos se guarda en el mismo servidor Kerberos y por tanto tendría mas variedad en los modelos a implementar.
 
-Separe las partes del backend clasico en las siguientes secciones:
+Separé las partes del backend clasico en las siguientes secciones:
 
-- Administracion de principals en la base de datos. ¿Es igual la manipulacion de principals de servicios como de usuarios/hosts?
+- Administración de principals en la base de datos. ¿Es igual la manipulación de principals de servicios como de usuarios/hosts?
   
-  Politicas. Directrices de seguridad en la gestión de cuentas.
+  Políticas. Directrices de seguridad en la gestión de cuentas.
   
-  Bloqueo de cuentas. ¿Cuanto tiempo estara bloqueada una cuenta al no haber cumplido las directrices de una politica?
+  Bloqueo de cuentas. ¿Cuánto tiempo estara bloqueada una cuenta al no haber cumplido las directrices de una política?
   
   Contraseñas de usuarios, stashs para las contraseñas de administradores. ¿Es necesario que los principals de los servicios tengan contraseña?
   
-  Permisos y acls. ¿Quien tiene permisos y que permisos exactamente?
+  Permisos y acls. ¿Quién tiene permisos y qué permisos exactamente?
   
-- Copias de seguridad e injeccion automatizada de usuarios y servicios con la utilizacion de scripts.
-  Insercion masiva de usuarios proveniendo los datos de los mismos de ficheros externos.
-  Insercion de los servicios que gestionara el realm.
+- Copias de seguridad e injección automatizada de usuarios y servicios con la utilización de scripts.
+  Inserción masiva de usuarios proveniendo los datos de los mismos de ficheros externos.
+  Inserción de los servicios que gestionara el realm.
   
 - Servicios Kerberizados (unix, pam, ldap, xinetd)
 
