@@ -36,8 +36,17 @@
     width: 70%;
     margin:auto;
   }
+  
+  div.sourceCode {
+    overflow-x: auto;
+    background-color: #cee7f8;
+    font-size: 20px;
+    border-radius: 20px;
+  }
+
   figcaption {
     margin: 70px;
+    font-size: 20px;
   }
   footer {
     position: absolute;

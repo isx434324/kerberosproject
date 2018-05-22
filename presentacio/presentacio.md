@@ -74,7 +74,7 @@ Creating directory '/tmp/home/user'.
 
 ### Model 2 - Ssh Kerberized
 
-The use of the service SSH using kerberos credentials instead of a local/unix password fot the user authentication.
+The use of the service SSH using kerberos credentials instead of a local/unix password for user authentication.
 
 ```bash
 [root@kclient docker]# kinit tania
