@@ -1,5 +1,36 @@
 # Daily
 
+## Semana 23-04-2018  -- 27-04-2018
+**Lunes: **
+
+Montar servidor amb backend clasic I estudiar eines de backup (krb5 dump).
+
+**Martes: **
+**Miercoles: **
+**Jueves: **
+**Viernes: **
+
+## Semana 30-04-2018  -- 04-05-2018
+**Lunes: **
+**Martes: **
+**Miercoles: **
+**Jueves: **
+**Viernes: **
+
+## Semana 23-04-2018  -- 04-05-2018
+**Lunes: **
+**Martes: **
+**Miercoles: **
+**Jueves: **
+**Viernes: **
+
+## Semana 23-04-2018  -- 04-05-2018
+**Lunes: **
+**Martes: **
+**Miercoles: **
+**Jueves: **
+**Viernes: **
+
 **Jueves 26/04/2018**
 
 Montar servidor amb backend clasic I estudiar eines de backup (krb5 dump).
