@@ -7,6 +7,6 @@ pandoc \
 	--standalone \
 	--to=dzslides \
 	--incremental \
-	--css=propi_style.css \
+	--css=style_krb.css \
 	--output=presentacio.html \
 	presentacio.md

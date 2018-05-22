@@ -6,10 +6,15 @@
       font-size: 20pt;
     }
   address, blockquote, dl, fieldset, form, h1, h2, h3, h4, h5, h6, hr, ol, p, pre, table, ul, dl { padding: 10px 20px 10px 20px; }
+  p { font-size: 23px;}
   h1 {
     text-align: center;
-    margin: 10pt 10pt 20pt 10pt;
+    margin: 10pt 90pt 20pt 90pt;
+    border-radius: 70px 10px 50px 7px;
+    border-top: #131380 solid 1px;
+    border-bottom: #131380 solid 7px;
   }
+
   ul, ol {
     margin: 10px 10px 10px 50px;
   }
