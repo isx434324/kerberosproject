@@ -1,11 +1,11 @@
 # Daily
 
 ## Semana 23-04-2018  -- 27-04-2018
-**Lunes\:** Leer manual administrador MIT, documentacion general.
-**Martes\:** Examen M11 Sistemas.
-**Miercoles\:** Servidor kerberos interactivo.
-**Jueves\:** Herramientas de backup y restore (krb5 dump).
-**Viernes\:** Servidor ldapserver.edt.org, resolucion de inconvenientes con creacion de realm.
+- **Lunes\:** Leer manual administrador MIT, documentacion general.
+- **Martes\:** Examen M11 Sistemas.
+- **Miercoles\:** Servidor kerberos interactivo.
+- **Jueves\:** Herramientas de backup y restore (krb5 dump).
+- **Viernes\:** Servidor ldapserver.edt.org, resolucion de inconvenientes con creacion de realm.
 
 ## Semana 30-04-2018  -- 04-05-2018
 **Lunes\:** Servidor ldapserver.edt.org, resolucion de inconvenientes al iniciar servicios.
