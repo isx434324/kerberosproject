@@ -13,7 +13,7 @@ Separé las partes del backend clasico en las siguientes secciones:
   
   Bloqueo de cuentas. ¿Cuánto tiempo estara bloqueada una cuenta al no haber cumplido las directrices de una política?
   
-  Contraseñas de usuarios, stashs para las contraseñas de administradores. ¿Es necesario que los principals de los servicios tengan contraseña?
+  Contraseñas de usuarios, ficheros _stash_  para las contraseñas de administradores. ¿Es necesario que los principals de los servicios tengan contraseña?
   
   Permisos y acls. ¿Quién tiene permisos y qué permisos exactamente?
   
