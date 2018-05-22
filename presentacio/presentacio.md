@@ -80,6 +80,9 @@ The use of the service SSH using kerberos credentials instead of a local/unix pa
 [root@kclient docker]# kinit tania
 Password for tania@EDT.ORG: ktania
 ```
+
+---
+
 ```bash
  [root@kclient docker]# ssh tania@ksshserver
 The authenticity of host 'ksshserver (172.11.0.4)' can't be established.
@@ -113,7 +116,11 @@ Name (localhost:root): tania
 331 Please specify the password.
 Password: ktania
 230 Login successful.
+```
 
+---
+
+```bash
 Remote system type is UNIX.
 Using binary mode to transfer files.
 
@@ -142,13 +149,17 @@ ftp> quit
 Servei IMAP use kerberos for clients authentication (with module pam_krb5).
 Note that the principal must exist in kerberos database.
 
- ```bash
+```bash
 [root@kimapserver docker]# telnet localhost 143
 Trying ::1...
 Connected to localhost.
 Escape character is '^]'.
 * OK [CAPABILITY IMAP4REV1 I18NLEVEL=1 LITERAL+ SASL-IR LOGIN-REFERRALS STARTTLS] localhost IMAP4rev1 2007f.404 at Wed, 16 May 2018 09:47:02 +0000 (UTC)
+```
 
+---
+
+```bash
 a login pere kpere
 a OK [CAPABILITY IMAP4REV1 I18NLEVEL=1 LITERAL+ IDLE UIDPLUS NAMESPACE CHILDREN MAILBOX-REFERRALS BINARY UNSELECT ESEARCH WITHIN SCAN SORT THREAD=REFERENCES THREAD=ORDEREDSUBJECT MULTIAPPEND]
 
@@ -158,7 +169,7 @@ a logout
 * BYE kimapserver IMAP4 rev1 server terminating connection
 a OK LOGOUT completed
 Connection closed by foreign host.
- ```
+```
 
 
 ---
@@ -168,13 +179,18 @@ Connection closed by foreign host.
 ### Model 5 - Server Kerberos using backend LDAP
 	
 Server Kerberos with an LDAP server as backend. This means Kerberos database is stored in a LDAP Server (using a special schema for kerberos principals).
- ```bash
- 
- [root@krbldap docker]# ldapsearch -x -LLL dn
+
+```bash 
+[root@krbldap docker]# ldapsearch -x -LLL dn
 dn: dc=edt,dc=org
 ...
 dn: cn=krbldap.edt.org,dc=edt,dc=org
 dn: cn=EDT.ORG,cn=krbldap.edt.org,dc=edt,dc=org
+```
+
+---
+
+```bash
 dn: krbPrincipalName=K/M@EDT.ORG,cn=EDT.ORG,cn=krbldap.edt.org,dc=edt,dc=org
 dn: krbPrincipalName=krbtgt/EDT.ORG@EDT.ORG,cn=EDT.ORG,cn=krbldap.edt.org,dc=edt,dc=org
 dn: krbPrincipalName=kadmin/admin@EDT.ORG,cn=EDT.ORG,cn=krbldap.edt.org,dc=edt,dc=org
@@ -185,7 +201,7 @@ dn: krbPrincipalName=kadmin/history@EDT.ORG,cn=EDT.ORG,cn=krbldap.edt.org,dc=edt
 dn: krbPrincipalName=taniaprova@EDT.ORG,cn=EDT.ORG,cn=krbldap.edt.org,dc=edt,dc=org
 dn: krbPrincipalName=tania/admin@EDT.ORG,cn=EDT.ORG,cn=krbldap.edt.org,dc=edt,dc=org
 dn: krbPrincipalName=tania@EDT.ORG,cn=EDT.ORG,cn=krbldap.edt.org,dc=edt,dc=org
- ```
+```
 
 ---
 
