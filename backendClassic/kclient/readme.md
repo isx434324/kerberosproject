@@ -1,4 +1,4 @@
-# Model 2 - Complete authentication of a client UNIX using PAM.
+# Model 1 - Complete authentication of a client UNIX using PAM.
 
 ## Overview
 
