@@ -1,0 +1,656 @@
+<!DOCTYPE html>
+<head>
+  <meta charset="utf-8">
+  <meta name="generator" content="pandoc">
+  <meta name="author" content="Tania Gabriela Bonilla Alvarenga">
+  <title>Kerberos Service</title>
+  <style type="text/css">code{white-space: pre;}</style>
+  <style type="text/css">
+div.sourceCode { overflow-x: auto; }
+table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
+  margin: 0; padding: 0; vertical-align: baseline; border: none; }
+table.sourceCode { width: 100%; line-height: 100%; }
+td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; color: #aaaaaa; border-right: 1px solid #aaaaaa; }
+td.sourceCode { padding-left: 5px; }
+code > span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code > span.dt { color: #902000; } /* DataType */
+code > span.dv { color: #40a070; } /* DecVal */
+code > span.bn { color: #40a070; } /* BaseN */
+code > span.fl { color: #40a070; } /* Float */
+code > span.ch { color: #4070a0; } /* Char */
+code > span.st { color: #4070a0; } /* String */
+code > span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code > span.ot { color: #007020; } /* Other */
+code > span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code > span.fu { color: #06287e; } /* Function */
+code > span.er { color: #ff0000; font-weight: bold; } /* Error */
+code > span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+code > span.cn { color: #880000; } /* Constant */
+code > span.sc { color: #4070a0; } /* SpecialChar */
+code > span.vs { color: #4070a0; } /* VerbatimString */
+code > span.ss { color: #bb6688; } /* SpecialString */
+code > span.im { } /* Import */
+code > span.va { color: #19177c; } /* Variable */
+code > span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code > span.op { color: #666666; } /* Operator */
+code > span.bu { } /* BuiltIn */
+code > span.ex { } /* Extension */
+code > span.pp { color: #bc7a00; } /* Preprocessor */
+code > span.at { color: #7d9029; } /* Attribute */
+code > span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code > span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code > span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+  </style>
+  <link rel="stylesheet" href="propi_style.css">
+</head>
+<body>
+<section class="title">
+  <h1 class="title">Kerberos Service</h1>
+  <footer>
+    <span class="author">Tania Gabriela Bonilla Alvarenga</span> · <span class="date">2018/05/23</span>
+  </footer>
+</section>
+<section id="fluffy" class="slide level2">
+<h1><img src="fluffyasleep.jpg" alt="fluffy" /></h1>
+</section>
+<section id="introduction" class="slide level2">
+<h1>Introduction</h1>
+<p>Kerberos is a network authentication protocol that provides strong authentication for client/server applications using secret-key cryptography.</p>
+<p>Kerberos was created by MIT (Massachusetts Institute of Technology) as a solution to the problems across an insecure network connection.</p>
+</section>
+<section id="introduction-1" class="slide level2">
+<h1>Introduction</h1>
+<ul class="incremental">
+<li>Kerberos Tickets</li>
+<li>Kerberos Database</li>
+<li>Kerberos Realms</li>
+<li>Ticket Granting Ticket</li>
+<li><p>Network Services and Master Database</p>
+<p>host/laughter.mit.edu@ATHENA.MIT.EDU</p></li>
+<li>Keytab File</li>
+<li><p>User/Kerberos Interaction</p></li>
+</ul>
+</section>
+<section class="slide level2">
+
+<figure>
+<img src="kerberos_1.gif" alt="krb1" /><figcaption>krb1</figcaption>
+</figure>
+</section>
+<section class="slide level2">
+
+<figure>
+<img src="kerberos_2.png" alt="krb2" /><figcaption>krb2</figcaption>
+</figure>
+</section>
+<section id="backend-classic" class="slide level2">
+<h1>Backend Classic</h1>
+<h4 id="server-kerberos">Server Kerberos</h4>
+<p>Manipulation and treatment of the kerberos database</p>
+<ul class="incremental">
+<li>Kadmin/kadmin.local</li>
+<li>Date Format</li>
+<li>Principals</li>
+<li>Policies</li>
+<li>Global operations</li>
+</ul>
+</section>
+<section id="backend-classic-1" class="slide level2">
+<h1>Backend Classic</h1>
+<h3 id="model-1---client-unixpam">Model 1 - Client Unix/PAM</h3>
+<p>Process of the kerberos authentication of a user Unix having the account information in a server LDAP and the password in the Kerberos Server.</p>
+<div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash">$ <span class="kw">su</span> - user
+<span class="kw">Password</span>: kerberos_password
+<span class="kw">Creating</span> directory <span class="st">&#39;/tmp/home/user&#39;</span>.
+<span class="kw">-sh-4.3</span>$ pwd
+<span class="kw">/tmp/home/pau</span></code></pre></div>
+</section>
+<section id="backend-classic-2" class="slide level2">
+<h1>Backend Classic</h1>
+<h3 id="model-2---ssh-kerberized">Model 2 - Ssh Kerberized</h3>
+<p>The use of the service SSH using kerberos credentials instead of a local/unix password fot the user authentication.</p>
+<div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash">[<span class="kw">root@kclient</span> docker]# kinit tania
+<span class="kw">Password</span> for tania@EDT.ORG: ktania</code></pre></div>
+<div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash"> [<span class="kw">root@kclient</span> docker]# ssh tania@ksshserver
+<span class="kw">The</span> authenticity of host <span class="st">&#39;ksshserver (172.11.0.4)&#39;</span> can<span class="st">&#39;t be established.</span>
+<span class="st">ECDSA key fingerprint is SHA256:BSe2q+Ce8nKbsMCd+QHhpY25TdUDgnGaiNeF4AItyPA.</span>
+<span class="st">ECDSA key fingerprint is MD5:12:90:86:11:ee:20:1f:d1:bf:0b:12:aa:cf:9a:33:31.</span>
+<span class="st">Are you sure you want to continue connecting (yes/no)? yes</span>
+<span class="st">Warning: Permanently added &#39;</span>ksshserver,172.11.0.4<span class="st">&#39; (ECDSA) to the list of known hosts.</span>
+<span class="st">[tania@ksshserver ~]$ logout</span>
+<span class="st">Connection to ksshserver closed.</span></code></pre></div>
+</section>
+<section id="backend-classic-3" class="slide level2">
+<h1>Backend Classic</h1>
+<h3 id="model-3---ftp-with-kerberos-authentication">Model 3 - FTP with kerberos authentication</h3>
+<p>Server FTP use kerberos for clients authentication(with module pam_krb5).</p>
+<p>Having the principal in the kerberos database it's possible to use the service FTP even without a unix password.</p>
+<div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash">[<span class="kw">root@kftp</span> docker]# useradd tania
+ 
+[<span class="kw">root@kclient</span> docker]# ftp 172.11.0.5
+<span class="kw">Connected</span> to 172.11.0.5 (172.11.0.5)<span class="kw">.</span>
+<span class="kw">Trying</span> ::1...
+<span class="kw">Connected</span> to localhost (::1)<span class="kw">.</span>
+<span class="kw">220</span> Welcome to FTP service, password kerberos.
+<span class="kw">Name</span> (localhost:root)<span class="kw">:</span> tania
+<span class="kw">331</span> Please specify the password.
+<span class="kw">Password</span>: ktania
+<span class="kw">230</span> Login successful.
+
+<span class="kw">Remote</span> system type is UNIX.
+<span class="kw">Using</span> binary mode to transfer files.
+
+<span class="kw">ftp&gt;</span> ls
+<span class="kw">229</span> Entering Extended Passive Mode (<span class="kw">|||27840|</span>)
+<span class="kw">150</span> Here comes the directory listing.
+<span class="kw">226</span> Directory send OK.
+
+<span class="kw">ftp&gt;</span> get /var/ftp/prova01.txt filetania.txt
+<span class="kw">local</span>: filetania.txt remote: /var/ftp/prova01.txt
+<span class="kw">227</span> Entering Passive Mode (172,11,0,11,24,0)<span class="kw">.</span>
+<span class="kw">150</span> Opening BINARY mode data connection for /var/ftp/prova01.txt (14 bytes)<span class="kw">.</span>
+<span class="kw">226</span> Transfer complete.
+<span class="kw">14</span> bytes received in 0.000214 secs (65.42 Kbytes/sec)
+
+<span class="kw">ftp&gt;</span> quit
+<span class="kw">221</span> Goodbye.</code></pre></div>
+</section>
+<section id="backend-classic-4" class="slide level2">
+<h1>Backend Classic</h1>
+<h3 id="model-4---imap-with-kerberos-authentication">Model 4 - Imap with kerberos authentication</h3>
+<p>Servei IMAP use kerberos for clients authentication (with module pam_krb5). Note that the principal must exist in kerberos database.</p>
+<p>```bash [root@kimapserver docker]# telnet localhost 143 Trying ::1... Connected to localhost. Escape character is '^]'. * OK [CAPABILITY IMAP4REV1 I18NLEVEL=1 LITERAL+ SASL-IR LOGIN-REFERRALS STARTTLS] localhost IMAP4rev1 2007f.404 at Wed, 16 May 2018 09:47:02 +0000 (UTC)</p>
+<p>a login pere kpere a OK [CAPABILITY IMAP4REV1 I18NLEVEL=1 LITERAL+ IDLE UIDPLUS NAMESPACE CHILDREN MAILBOX-REFERRALS BINARY UNSELECT ESEARCH WITHIN SCAN SORT THREAD=REFERENCES THREAD=ORDEREDSUBJECT MULTIAPPEND]</p>
+<p>User pere authenticated</p>
+<p>a logout * BYE kimapserver IMAP4 rev1 server terminating connection a OK LOGOUT completed Connection closed by foreign host. ```</p>
+</section>
+<section id="backend-ldap" class="slide level2">
+<h1>Backend LDAP</h1>
+<h3 id="model-5---server-kerberos-using-backend-ldap">Model 5 - Server Kerberos using backend LDAP</h3>
+<p>Server Kerberos with an LDAP server as backend. This means Kerberos database is stored in a LDAP Server (using a special schema for kerberos principals). ```bash</p>
+<p>[root@krbldap docker]# ldapsearch -x -LLL dn dn: dc=edt,dc=org ... dn: cn=krbldap.edt.org,dc=edt,dc=org dn: cn=EDT.ORG,cn=krbldap.edt.org,dc=edt,dc=org dn: krbPrincipalName=K/M@EDT.ORG,cn=EDT.ORG,cn=krbldap.edt.org,dc=edt,dc=org dn: krbPrincipalName=krbtgt/EDT.ORG@EDT.ORG,cn=EDT.ORG,cn=krbldap.edt.org,dc=edt,dc=org dn: krbPrincipalName=kadmin/admin@EDT.ORG,cn=EDT.ORG,cn=krbldap.edt.org,dc=edt,dc=org dn: krbPrincipalName=kadmin/krbldap.edt.org@EDT.ORG,cn=EDT.ORG,cn=krbldap.edt.org,dc=edt,dc=org dn: krbPrincipalName=kiprop/krbldap.edt.org@EDT.ORG,cn=EDT.ORG,cn=krbldap.edt.org,dc=edt,dc=org dn: krbPrincipalName=kadmin/changepw@EDT.ORG,cn=EDT.ORG,cn=krbldap.edt.org,dc=edt,dc=org dn: krbPrincipalName=kadmin/history@EDT.ORG,cn=EDT.ORG,cn=krbldap.edt.org,dc=edt,dc=org dn: krbPrincipalName=taniaprova@EDT.ORG,cn=EDT.ORG,cn=krbldap.edt.org,dc=edt,dc=org dn: krbPrincipalName=tania/admin@EDT.ORG,cn=EDT.ORG,cn=krbldap.edt.org,dc=edt,dc=org dn: krbPrincipalName=tania@EDT.ORG,cn=EDT.ORG,cn=krbldap.edt.org,dc=edt,dc=org ```</p>
+</section>
+<section id="thanks-for-your-attention" class="slide level2">
+<h1>Thanks for your attention!</h1>
+<pre><code>    Escola del Treball - HISX2
+    2018/05/23</code></pre>
+</section>
+<!-- {{{{ dzslides core
+#
+#
+#     __  __  __       .  __   ___  __
+#    |  \  / /__` |    | |  \ |__  /__`
+#    |__/ /_ .__/ |___ | |__/ |___ .__/ core :€
+#
+#
+# The following block of code is not supposed to be edited.
+# But if you want to change the behavior of these slides,
+# feel free to hack it!
+#
+-->
+
+<div id="progress-bar"></div>
+
+<!-- Default Style -->
+<style>
+  * { margin: 0; padding: 0; -moz-box-sizing: border-box; -webkit-box-sizing: border-box; box-sizing: border-box; }
+  [role="note"] { display: none; }
+  body {
+    width: 800px; height: 600px;
+    margin-left: -400px; margin-top: -300px;
+    position: absolute; top: 50%; left: 50%;
+    overflow: hidden;
+    display: none;
+  }
+  .view body {
+    position: static;
+    margin: 0; padding: 0;
+    width: 100%; height: 100%;
+    display: inline-block;
+    overflow: visible; overflow-x: hidden;
+    /* undo Dz.onresize */
+    transform: none !important;
+    -moz-transform: none !important;
+    -webkit-transform: none !important;
+    -o-transform: none !important;
+    -ms-transform: none !important;
+  }
+  .view head, .view head > title { display: block }
+  section {
+    position: absolute;
+    pointer-events: none;
+    width: 100%; height: 100%;
+  }
+  .view section {
+    pointer-events: auto;
+    position: static;
+    width: 800px; height: 600px;
+    margin: -150px -200px;
+    float: left;
+
+    transform: scale(.4);
+    -moz-transform: scale(.4);
+    -webkit-transform: scale(.4);
+    -o-transform: scale(.4);
+    -ms-transform: scale(.4);
+  }
+  .view section > * { pointer-events: none; }
+  section[aria-selected] { pointer-events: auto; }
+  html { overflow: hidden; }
+  html.view { overflow: visible; }
+  body.loaded { display: block; }
+  .incremental {visibility: hidden; }
+  .incremental[active] {visibility: visible; }
+  #progress-bar{
+    bottom: 0;
+    position: absolute;
+    -moz-transition: width 400ms linear 0s;
+    -webkit-transition: width 400ms linear 0s;
+    -ms-transition: width 400ms linear 0s;
+    transition: width 400ms linear 0s;
+  }
+  .view #progress-bar {
+    display: none;
+  }
+</style>
+
+<script>
+  var Dz = {
+    remoteWindows: [],
+    idx: -1,
+    step: 0,
+    html: null,
+    slides: null,
+    progressBar : null,
+    params: {
+      autoplay: "1"
+    }
+  };
+
+  Dz.init = function() {
+    document.body.className = "loaded";
+    this.slides = Array.prototype.slice.call($$("body > section"));
+    this.progressBar = $("#progress-bar");
+    this.html = document.body.parentNode;
+    this.setupParams();
+    this.onhashchange();
+    this.setupTouchEvents();
+    this.onresize();
+    this.setupView();
+  }
+
+  Dz.setupParams = function() {
+    var p = window.location.search.substr(1).split('&');
+    p.forEach(function(e, i, a) {
+      var keyVal = e.split('=');
+      Dz.params[keyVal[0]] = decodeURIComponent(keyVal[1]);
+    });
+  // Specific params handling
+    if (!+this.params.autoplay)
+      $$.forEach($$("video"), function(v){ v.controls = true });
+  }
+
+  Dz.onkeydown = function(aEvent) {
+    // Don't intercept keyboard shortcuts
+    if (aEvent.altKey
+      || aEvent.ctrlKey
+      || aEvent.metaKey
+      || aEvent.shiftKey) {
+      return;
+    }
+    if ( aEvent.keyCode == 37 // left arrow
+      || aEvent.keyCode == 38 // up arrow
+      || aEvent.keyCode == 33 // page up
+    ) {
+      aEvent.preventDefault();
+      this.back();
+    }
+    if ( aEvent.keyCode == 39 // right arrow
+      || aEvent.keyCode == 40 // down arrow
+      || aEvent.keyCode == 34 // page down
+    ) {
+      aEvent.preventDefault();
+      this.forward();
+    }
+    if (aEvent.keyCode == 35) { // end
+      aEvent.preventDefault();
+      this.goEnd();
+    }
+    if (aEvent.keyCode == 36) { // home
+      aEvent.preventDefault();
+      this.goStart();
+    }
+    if (aEvent.keyCode == 32) { // space
+      aEvent.preventDefault();
+      this.toggleContent();
+    }
+    if (aEvent.keyCode == 70) { // f
+      aEvent.preventDefault();
+      this.goFullscreen();
+    }
+    if (aEvent.keyCode == 79) { // o
+      aEvent.preventDefault();
+      this.toggleView();
+    }
+  }
+
+  /* Touch Events */
+
+  Dz.setupTouchEvents = function() {
+    var orgX, newX;
+    var tracking = false;
+
+    var db = document.body;
+    db.addEventListener("touchstart", start.bind(this), false);
+    db.addEventListener("touchmove", move.bind(this), false);
+
+    function start(aEvent) {
+      aEvent.preventDefault();
+      tracking = true;
+      orgX = aEvent.changedTouches[0].pageX;
+    }
+
+    function move(aEvent) {
+      if (!tracking) return;
+      newX = aEvent.changedTouches[0].pageX;
+      if (orgX - newX > 100) {
+        tracking = false;
+        this.forward();
+      } else {
+        if (orgX - newX < -100) {
+          tracking = false;
+          this.back();
+        }
+      }
+    }
+  }
+
+  Dz.setupView = function() {
+    document.body.addEventListener("click", function ( e ) {
+      if (!Dz.html.classList.contains("view")) return;
+      if (!e.target || e.target.nodeName != "SECTION") return;
+
+      Dz.html.classList.remove("view");
+      Dz.setCursor(Dz.slides.indexOf(e.target) + 1);
+    }, false);
+  }
+
+  /* Adapt the size of the slides to the window */
+
+  Dz.onresize = function() {
+    var db = document.body;
+    var sx = db.clientWidth / window.innerWidth;
+    var sy = db.clientHeight / window.innerHeight;
+    var transform = "scale(" + (1/Math.max(sx, sy)) + ")";
+
+    db.style.MozTransform = transform;
+    db.style.WebkitTransform = transform;
+    db.style.OTransform = transform;
+    db.style.msTransform = transform;
+    db.style.transform = transform;
+  }
+
+
+  Dz.getNotes = function(aIdx) {
+    var s = $("section:nth-of-type(" + aIdx + ")");
+    var d = s.$("[role='note']");
+    return d ? d.innerHTML : "";
+  }
+
+  Dz.onmessage = function(aEvent) {
+    var argv = aEvent.data.split(" "), argc = argv.length;
+    argv.forEach(function(e, i, a) { a[i] = decodeURIComponent(e) });
+    var win = aEvent.source;
+    if (argv[0] === "REGISTER" && argc === 1) {
+      this.remoteWindows.push(win);
+      this.postMsg(win, "REGISTERED", document.title, this.slides.length);
+      this.postMsg(win, "CURSOR", this.idx + "." + this.step);
+      return;
+    }
+    if (argv[0] === "BACK" && argc === 1)
+      this.back();
+    if (argv[0] === "FORWARD" && argc === 1)
+      this.forward();
+    if (argv[0] === "START" && argc === 1)
+      this.goStart();
+    if (argv[0] === "END" && argc === 1)
+      this.goEnd();
+    if (argv[0] === "TOGGLE_CONTENT" && argc === 1)
+      this.toggleContent();
+    if (argv[0] === "SET_CURSOR" && argc === 2)
+      window.location.hash = "#" + argv[1];
+    if (argv[0] === "GET_CURSOR" && argc === 1)
+      this.postMsg(win, "CURSOR", this.idx + "." + this.step);
+    if (argv[0] === "GET_NOTES" && argc === 1)
+      this.postMsg(win, "NOTES", this.getNotes(this.idx));
+  }
+
+  Dz.toggleContent = function() {
+    // If a Video is present in this new slide, play it.
+    // If a Video is present in the previous slide, stop it.
+    var s = $("section[aria-selected]");
+    if (s) {
+      var video = s.$("video");
+      if (video) {
+        if (video.ended || video.paused) {
+          video.play();
+        } else {
+          video.pause();
+        }
+      }
+    }
+  }
+
+  Dz.setCursor = function(aIdx, aStep) {
+    // If the user change the slide number in the URL bar, jump
+    // to this slide.
+    aStep = (aStep != 0 && typeof aStep !== "undefined") ? "." + aStep : ".0";
+    window.location.hash = "#" + aIdx + aStep;
+  }
+
+  Dz.onhashchange = function() {
+    var cursor = window.location.hash.split("#"),
+        newidx = 1,
+        newstep = 0;
+    if (cursor.length == 2) {
+      newidx = ~~cursor[1].split(".")[0];
+      newstep = ~~cursor[1].split(".")[1];
+      if (newstep > Dz.slides[newidx - 1].$$('.incremental > *').length) {
+        newstep = 0;
+        newidx++;
+      }
+    }
+    this.setProgress(newidx, newstep);
+    if (newidx != this.idx) {
+      this.setSlide(newidx);
+    }
+    if (newstep != this.step) {
+      this.setIncremental(newstep);
+    }
+    for (var i = 0; i < this.remoteWindows.length; i++) {
+      this.postMsg(this.remoteWindows[i], "CURSOR", this.idx + "." + this.step);
+    }
+  }
+
+  Dz.back = function() {
+    if (this.idx == 1 && this.step == 0) {
+      return;
+    }
+    if (this.step == 0) {
+      this.setCursor(this.idx - 1,
+                     this.slides[this.idx - 2].$$('.incremental > *').length);
+    } else {
+      this.setCursor(this.idx, this.step - 1);
+    }
+  }
+
+  Dz.forward = function() {
+    if (this.idx >= this.slides.length &&
+        this.step >= this.slides[this.idx - 1].$$('.incremental > *').length) {
+        return;
+    }
+    if (this.step >= this.slides[this.idx - 1].$$('.incremental > *').length) {
+      this.setCursor(this.idx + 1, 0);
+    } else {
+      this.setCursor(this.idx, this.step + 1);
+    }
+  }
+
+  Dz.goStart = function() {
+    this.setCursor(1, 0);
+  }
+
+  Dz.goEnd = function() {
+    var lastIdx = this.slides.length;
+    var lastStep = this.slides[lastIdx - 1].$$('.incremental > *').length;
+    this.setCursor(lastIdx, lastStep);
+  }
+
+  Dz.toggleView = function() {
+    this.html.classList.toggle("view");
+
+    if (this.html.classList.contains("view")) {
+      $("section[aria-selected]").scrollIntoView(true);
+    }
+  }
+
+  Dz.setSlide = function(aIdx) {
+    this.idx = aIdx;
+    var old = $("section[aria-selected]");
+    var next = $("section:nth-of-type("+ this.idx +")");
+    if (old) {
+      old.removeAttribute("aria-selected");
+      var video = old.$("video");
+      if (video) {
+        video.pause();
+      }
+    }
+    if (next) {
+      next.setAttribute("aria-selected", "true");
+      if (this.html.classList.contains("view")) {
+        next.scrollIntoView();
+      }
+      var video = next.$("video");
+      if (video && !!+this.params.autoplay) {
+        video.play();
+      }
+    } else {
+      // That should not happen
+      this.idx = -1;
+      // console.warn("Slide doesn't exist.");
+    }
+  }
+
+  Dz.setIncremental = function(aStep) {
+    this.step = aStep;
+    var old = this.slides[this.idx - 1].$('.incremental > *[aria-selected]');
+    if (old) {
+      old.removeAttribute('aria-selected');
+    }
+    var incrementals = $$('.incremental');
+    if (this.step <= 0) {
+      $$.forEach(incrementals, function(aNode) {
+        aNode.removeAttribute('active');
+      });
+      return;
+    }
+    var next = this.slides[this.idx - 1].$$('.incremental > *')[this.step - 1];
+    if (next) {
+      next.setAttribute('aria-selected', true);
+      next.parentNode.setAttribute('active', true);
+      var found = false;
+      $$.forEach(incrementals, function(aNode) {
+        if (aNode != next.parentNode)
+          if (found)
+            aNode.removeAttribute('active');
+          else
+            aNode.setAttribute('active', true);
+        else
+          found = true;
+      });
+    } else {
+      setCursor(this.idx, 0);
+    }
+    return next;
+  }
+
+  Dz.goFullscreen = function() {
+    var html = $('html'),
+        requestFullscreen = html.requestFullscreen || html.requestFullScreen || html.mozRequestFullScreen || html.webkitRequestFullScreen;
+    if (requestFullscreen) {
+      requestFullscreen.apply(html);
+    }
+  }
+  
+  Dz.setProgress = function(aIdx, aStep) {
+    var slide = $("section:nth-of-type("+ aIdx +")");
+    if (!slide)
+      return;
+    var steps = slide.$$('.incremental > *').length + 1,
+        slideSize = 100 / (this.slides.length - 1),
+        stepSize = slideSize / steps;
+    this.progressBar.style.width = ((aIdx - 1) * slideSize + aStep * stepSize) + '%';
+  }
+  
+  Dz.postMsg = function(aWin, aMsg) { // [arg0, [arg1...]]
+    aMsg = [aMsg];
+    for (var i = 2; i < arguments.length; i++)
+      aMsg.push(encodeURIComponent(arguments[i]));
+    aWin.postMessage(aMsg.join(" "), "*");
+  }
+  
+  function init() {
+    Dz.init();
+    window.onkeydown = Dz.onkeydown.bind(Dz);
+    window.onresize = Dz.onresize.bind(Dz);
+    window.onhashchange = Dz.onhashchange.bind(Dz);
+    window.onmessage = Dz.onmessage.bind(Dz);
+  }
+
+  window.onload = init;
+</script>
+
+
+<script> // Helpers
+  if (!Function.prototype.bind) {
+    Function.prototype.bind = function (oThis) {
+
+      // closest thing possible to the ECMAScript 5 internal IsCallable
+      // function 
+      if (typeof this !== "function")
+      throw new TypeError(
+        "Function.prototype.bind - what is trying to be fBound is not callable"
+      );
+
+      var aArgs = Array.prototype.slice.call(arguments, 1),
+          fToBind = this,
+          fNOP = function () {},
+          fBound = function () {
+            return fToBind.apply( this instanceof fNOP ? this : oThis || window,
+                   aArgs.concat(Array.prototype.slice.call(arguments)));
+          };
+
+      fNOP.prototype = this.prototype;
+      fBound.prototype = new fNOP();
+
+      return fBound;
+    };
+  }
+
+  var $ = (HTMLElement.prototype.$ = function(aQuery) {
+    return this.querySelector(aQuery);
+  }).bind(document);
+
+  var $$ = (HTMLElement.prototype.$$ = function(aQuery) {
+    return this.querySelectorAll(aQuery);
+  }).bind(document);
+
+  $$.forEach = function(nodeList, fun) {
+    Array.prototype.forEach.call(nodeList, fun);
+  }
+
+</script>
+<!-- vim: set fdm=marker: }}} -->
+</body>
+</html>
