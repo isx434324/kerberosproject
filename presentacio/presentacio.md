@@ -104,9 +104,9 @@ Connection to ksshserver closed.
 
 ### Model 3 - FTP with kerberos authentication
 
-Server FTP use kerberos for clients authentication(with module pam_krb5).
+Server FTP use kerberos for clients authentication(module pam_krb5).
 
-Having the principal in the kerberos database it's possible to use the service FTP even without a unix password.
+Having the principal in kerberos database it's possible to FTP without a unix password.
 
 ```bash
 [root@kftp docker]# useradd tania

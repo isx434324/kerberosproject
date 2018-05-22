@@ -112,7 +112,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <section id="backend-classic-2" class="slide level2">
 <h1>Backend Classic</h1>
 <h3 id="model-2---ssh-kerberized">Model 2 - Ssh Kerberized</h3>
-<p>The use of the service SSH using kerberos credentials instead of a local/unix password fot the user authentication.</p>
+<p>The use of the service SSH using kerberos credentials instead of a local/unix password for user authentication.</p>
 <div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash">[<span class="kw">root@kclient</span> docker]# kinit tania
 <span class="kw">Password</span> for tania@EDT.ORG: ktania</code></pre></div>
 </section>
@@ -131,8 +131,8 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <section id="backend-classic-4" class="slide level2">
 <h1>Backend Classic</h1>
 <h3 id="model-3---ftp-with-kerberos-authentication">Model 3 - FTP with kerberos authentication</h3>
-<p>Server FTP use kerberos for clients authentication(with module pam_krb5).</p>
-<p>Having the principal in the kerberos database it's possible to use the service FTP even without a unix password.</p>
+<p>Server FTP use kerberos for clients authentication(module pam_krb5).</p>
+<p>Having the principal in kerberos database it's possible to FTP without a unix password.</p>
 <div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash">[<span class="kw">root@kftp</span> docker]# useradd tania
  
 [<span class="kw">root@kclient</span> docker]# ftp 172.11.0.5
