@@ -32,7 +32,7 @@ Kerberos was created by MIT (Massachusetts Institute of Technology) as a solutio
 
 ---
 
-![krb1](kerberos_1.gif)
+![krb1](kerberos_1.png)
 
 ---
 
