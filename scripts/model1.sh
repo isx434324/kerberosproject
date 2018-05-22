@@ -37,13 +37,13 @@ docker run --name $CONTAINER_LDAP \
 ## Docker Kerberos
 docker run --name $CONTAINER_KERBEROS \
 	--hostname $CONTAINER_KERBEROS --net $DOCKER_NETWORK \
-	--ip 172.18.0.2  --detach  $IMAGE_KERBEROS &>> $LOG_FILE \
+	--ip 172.11.0.2  --detach  $IMAGE_KERBEROS &>> $LOG_FILE \
 	&& echo " Kerberos Container Created"
 	
 ## Docker Client
 docker run --name $CONTAINER_CLIENT \
 	--hostname $CONTAINER_CLIENT --net $DOCKER_NETWORK \
-	--ip 172.18.0.3  --detach  $IMAGE_CLIENT &>> $LOG_FILE \
+	--ip 172.11.0.3  --detach  $IMAGE_CLIENT &>> $LOG_FILE \
 	&& echo " Client Container Created"
 	
 echo -e "For access: # docker exec -it [Container Name] /bin/bash "

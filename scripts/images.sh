@@ -26,11 +26,11 @@ docker rmi -f $IMAGE_LDAP     &>> $LOG_FILE
 docker rmi -f $IMAGE_KERBEROS &>> $LOG_FILE
 
 #echo "CREATING IMAGES"
-docker build -t $IMAGE_KERBEROS $DIRCLASSIC$IMAGE_KERBEROS  &>> $LOG_FILE
-docker build -t $IMAGE_LDAP 	$DIRCLASSIC$IMAGE_LDAP  	&>> $LOG_FILE
-docker build -t $IMAGE_CLIENT 	$DIRCLASSIC$IMAGE_CLIENT  	&>> $LOG_FILE
-docker build -t $IMAGE_SSH 		$DIRCLASSIC$IMAGE_SSH  		&>> $LOG_FILE
-docker build -t $IMAGE_FTP 		$DIRCLASSIC$IMAGE_FTP  		&>> $LOG_FILE
-docker build -t $IMAGE_IMAP 	$DIRCLASSIC$IMAGE_IMAP  	&>> $LOG_FILE
-docker build -t $IMAGE_KRBLDAP 	$DIRLDAP  					&>> $LOG_FILE
+docker build -t $IMAGE_KERBEROS $DIRCLASSIC$IMAGE_KERBEROS &>> $LOG_FILE
+docker build -t $IMAGE_LDAP 	$DIRCLASSIC$IMAGE_LDAP 	&>> $LOG_FILE
+docker build -t $IMAGE_CLIENT 	$DIRCLASSIC$IMAGE_CLIENT  &>> $LOG_FILE
+docker build -t $IMAGE_SSH 	$DIRCLASSIC$IMAGE_SSH  &>> $LOG_FILE
+docker build -t $IMAGE_FTP 	$DIRCLASSIC$IMAGE_FTP  &>> $LOG_FILE
+docker build -t $IMAGE_IMAP 	$DIRCLASSIC$IMAGE_IMAP &>> $LOG_FILE
+docker build -t $IMAGE_KRBLDAP 	$DIRLDAP  &>> $LOG_FILE
 

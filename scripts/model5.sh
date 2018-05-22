@@ -11,7 +11,7 @@ IMAGE_KERBEROSLDAP="krbldap.edt.org"
 
 #----------------------------------------------------------------------#
 
-# Stop all containers with this names if this is running
+# Stop all containers with this names if running
 echo " STOPING CONTAINERS"
 docker stop $CONTAINER_KERBEROSLDAP &> $LOG_FILE
 

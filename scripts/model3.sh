@@ -5,7 +5,7 @@
 # If you want check the logs , its posible in $LOG_FILE variable
 
 LOG_FILE="/var/tmp/log_model3"
-DOCKER_NETWORK="ldap"
+DOCKER_NETWORK="kerberos"
 CONTAINER_FTP="kftpserver"
 CONTAINER_KERBEROS="krb.edt.org"
 CONTAINER_CLIENT="kclient"

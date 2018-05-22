@@ -15,7 +15,7 @@ IMAGE_CLIENT="kclient"
 
 #----------------------------------------------------------------------#
 
-# Stop all containers with this names if this is running
+# Stop all containers with this names if running
 echo " STOPING CONTAINERS"
 docker stop $CONTAINER_SSH &> $LOG_FILE
 docker stop $CONTAINER_KERBEROS &>> $LOG_FILE
@@ -32,7 +32,7 @@ docker rm $CONTAINER_CLIENT  &>> $LOG_FILE
 docker run --name $CONTAINER_SSH \
 	--hostname $CONTAINER_SSH --net $DOCKER_NETWORK \
 	--ip 172.11.0.4  --detach $IMAGE_SSH &>> $LOG_FILE \
-	&& echo " Ldap Container Created"
+	&& echo " SSH Container Created"
 
 ## Docker Kerberos
 docker run --name $CONTAINER_KERBEROS \
