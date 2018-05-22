@@ -29,8 +29,12 @@
 
   /* Figures are displayed full-page, with the caption on
      top of the image/video */
+  .level2 figure img{
+    border-radius: 30px;
+  }
   figure {
-    background-color: black;
+    width: 70%;
+    margin:auto;
   }
   figcaption {
     margin: 70px;

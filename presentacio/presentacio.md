@@ -83,6 +83,10 @@ Password for tania@EDT.ORG: ktania
 
 ---
 
+## Backend Classic
+
+### Model 2 - Ssh Kerberized
+
 ```bash
  [root@kclient docker]# ssh tania@ksshserver
 The authenticity of host 'ksshserver (172.11.0.4)' can't be established.
@@ -119,6 +123,10 @@ Password: ktania
 ```
 
 ---
+
+## Backend Classic
+
+### Model 3 - FTP with kerberos authentication
 
 ```bash
 Remote system type is UNIX.
@@ -159,6 +167,10 @@ Escape character is '^]'.
 
 ---
 
+## Backend Classic
+
+### Model 4 - Imap with kerberos authentication
+
 ```bash
 a login pere kpere
 a OK [CAPABILITY IMAP4REV1 I18NLEVEL=1 LITERAL+ IDLE UIDPLUS NAMESPACE CHILDREN MAILBOX-REFERRALS BINARY UNSELECT ESEARCH WITHIN SCAN SORT THREAD=REFERENCES THREAD=ORDEREDSUBJECT MULTIAPPEND]
@@ -189,6 +201,10 @@ dn: cn=EDT.ORG,cn=krbldap.edt.org,dc=edt,dc=org
 ```
 
 ---
+
+## Backend LDAP
+
+### Model 5 - Server Kerberos using backend LDAP
 
 ```bash
 dn: krbPrincipalName=K/M@EDT.ORG,cn=EDT.ORG,cn=krbldap.edt.org,dc=edt,dc=org

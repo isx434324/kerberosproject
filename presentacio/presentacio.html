@@ -116,8 +116,9 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash">[<span class="kw">root@kclient</span> docker]# kinit tania
 <span class="kw">Password</span> for tania@EDT.ORG: ktania</code></pre></div>
 </section>
-<section class="slide level2">
-
+<section id="backend-classic-3" class="slide level2">
+<h1>Backend Classic</h1>
+<h3 id="model-2---ssh-kerberized-1">Model 2 - Ssh Kerberized</h3>
 <div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash"> [<span class="kw">root@kclient</span> docker]# ssh tania@ksshserver
 <span class="kw">The</span> authenticity of host <span class="st">&#39;ksshserver (172.11.0.4)&#39;</span> can<span class="st">&#39;t be established.</span>
 <span class="st">ECDSA key fingerprint is SHA256:BSe2q+Ce8nKbsMCd+QHhpY25TdUDgnGaiNeF4AItyPA.</span>
@@ -127,7 +128,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <span class="st">[tania@ksshserver ~]$ logout</span>
 <span class="st">Connection to ksshserver closed.</span></code></pre></div>
 </section>
-<section id="backend-classic-3" class="slide level2">
+<section id="backend-classic-4" class="slide level2">
 <h1>Backend Classic</h1>
 <h3 id="model-3---ftp-with-kerberos-authentication">Model 3 - FTP with kerberos authentication</h3>
 <p>Server FTP use kerberos for clients authentication(with module pam_krb5).</p>
@@ -144,8 +145,9 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <span class="kw">Password</span>: ktania
 <span class="kw">230</span> Login successful.</code></pre></div>
 </section>
-<section class="slide level2">
-
+<section id="backend-classic-5" class="slide level2">
+<h1>Backend Classic</h1>
+<h3 id="model-3---ftp-with-kerberos-authentication-1">Model 3 - FTP with kerberos authentication</h3>
 <div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash"><span class="kw">Remote</span> system type is UNIX.
 <span class="kw">Using</span> binary mode to transfer files.
 
@@ -164,7 +166,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <span class="kw">ftp&gt;</span> quit
 <span class="kw">221</span> Goodbye.</code></pre></div>
 </section>
-<section id="backend-classic-4" class="slide level2">
+<section id="backend-classic-6" class="slide level2">
 <h1>Backend Classic</h1>
 <h3 id="model-4---imap-with-kerberos-authentication">Model 4 - Imap with kerberos authentication</h3>
 <p>Servei IMAP use kerberos for clients authentication (with module pam_krb5). Note that the principal must exist in kerberos database.</p>
@@ -174,8 +176,9 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <span class="kw">Escape</span> character is <span class="st">&#39;^]&#39;</span>.
 <span class="kw">*</span> OK [CAPABILITY IMAP4REV1 I18NLEVEL=1 LITERAL+ SASL-IR LOGIN-REFERRALS STARTTLS] localhost IMAP4rev1 2007f.404 at Wed, 16 May 2018 09:47:02 +0000 (UTC)</code></pre></div>
 </section>
-<section class="slide level2">
-
+<section id="backend-classic-7" class="slide level2">
+<h1>Backend Classic</h1>
+<h3 id="model-4---imap-with-kerberos-authentication-1">Model 4 - Imap with kerberos authentication</h3>
 <div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash"><span class="kw">a</span> login pere kpere
 <span class="kw">a</span> OK [CAPABILITY IMAP4REV1 I18NLEVEL=1 LITERAL+ IDLE UIDPLUS NAMESPACE CHILDREN MAILBOX-REFERRALS BINARY UNSELECT ESEARCH WITHIN SCAN SORT THREAD=REFERENCES THREAD=ORDEREDSUBJECT MULTIAPPEND]
 
@@ -196,8 +199,9 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <span class="kw">dn</span>: cn=krbldap.edt.org,dc=edt,dc=org
 <span class="kw">dn</span>: cn=EDT.ORG,cn=krbldap.edt.org,dc=edt,dc=org</code></pre></div>
 </section>
-<section class="slide level2">
-
+<section id="backend-ldap-1" class="slide level2">
+<h1>Backend LDAP</h1>
+<h3 id="model-5---server-kerberos-using-backend-ldap-1">Model 5 - Server Kerberos using backend LDAP</h3>
 <div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash"><span class="kw">dn</span>: krbPrincipalName=K/M@EDT.ORG,cn=EDT.ORG,cn=krbldap.edt.org,dc=edt,dc=org
 <span class="kw">dn</span>: krbPrincipalName=krbtgt/EDT.ORG@EDT.ORG,cn=EDT.ORG,cn=krbldap.edt.org,dc=edt,dc=org
 <span class="kw">dn</span>: krbPrincipalName=kadmin/admin@EDT.ORG,cn=EDT.ORG,cn=krbldap.edt.org,dc=edt,dc=org
