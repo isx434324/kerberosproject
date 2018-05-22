@@ -23,7 +23,7 @@ docker rm $CONTAINER_KERBEROSLDAP  &>> $LOG_FILE
 ## Docker Kerberos
 docker run --name $CONTAINER_KERBEROSLDAP \
 	--hostname $CONTAINER_KERBEROSLDAP --net $DOCKER_NETWORK \
-	--ip 172.18.0.11  --detach  $IMAGE_KERBEROSLDAP &>> $LOG_FILE \
+	--ip 172.11.0.11  --detach  $IMAGE_KERBEROSLDAP &>> $LOG_FILE \
 	&& echo " Kerberos Container Created"
 		
 echo -e "For access: # docker exec -it [Container Name] /bin/bash "
