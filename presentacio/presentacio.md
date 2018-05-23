@@ -65,7 +65,7 @@ $ su - user
 Password: kerberos_password
 Creating directory '/tmp/home/user'.
 -sh-4.3$ pwd
-/tmp/home/pau
+/tmp/home/user
 ```
 
 ---
@@ -129,11 +129,6 @@ Password: ktania
 ```bash
 Remote system type is UNIX.
 Using binary mode to transfer files.
-
-ftp> ls
-229 Entering Extended Passive Mode (|||27840|)
-150 Here comes the directory listing.
-226 Directory send OK.
 
 ftp> get /var/ftp/prova01.txt filetania.txt
 local: filetania.txt remote: /var/ftp/prova01.txt

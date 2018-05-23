@@ -107,7 +107,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <span class="kw">Password</span>: kerberos_password
 <span class="kw">Creating</span> directory <span class="st">&#39;/tmp/home/user&#39;</span>.
 <span class="kw">-sh-4.3</span>$ pwd
-<span class="kw">/tmp/home/pau</span></code></pre></div>
+<span class="kw">/tmp/home/user</span></code></pre></div>
 </section>
 <section id="backend-classic-2" class="slide level2">
 <h1>Backend Classic</h1>
@@ -149,11 +149,6 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <h3 id="model-3---ftp-with-kerberos-authentication-1">Model 3 - FTP with kerberos authentication</h3>
 <div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash"><span class="kw">Remote</span> system type is UNIX.
 <span class="kw">Using</span> binary mode to transfer files.
-
-<span class="kw">ftp&gt;</span> ls
-<span class="kw">229</span> Entering Extended Passive Mode (<span class="kw">|||27840|</span>)
-<span class="kw">150</span> Here comes the directory listing.
-<span class="kw">226</span> Directory send OK.
 
 <span class="kw">ftp&gt;</span> get /var/ftp/prova01.txt filetania.txt
 <span class="kw">local</span>: filetania.txt remote: /var/ftp/prova01.txt
