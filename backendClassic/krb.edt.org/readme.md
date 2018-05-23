@@ -1,4 +1,4 @@
-# Model 1 - Basic treatment of the kerberos database
+# Basic treatment of the kerberos database
 
 ## Overview
 
