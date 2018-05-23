@@ -1,4 +1,4 @@
-# Basic treatment of the kerberos database
+# Basic treatment of _kerberos database_.
 
 ## Overview
 
